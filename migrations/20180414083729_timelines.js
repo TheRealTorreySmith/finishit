@@ -3,6 +3,9 @@ exports.up = (knex, Promise) => {
     // TABLE COLUMN DEFINITIONS HERE
     table.increments().primary()
     table.string('name', 255).notNull()
+    table.text('description').notNull()
+    table.boolean('editable').notNull().defaultTo(true)
+    table.boolean('selectable').notNull().defaultTo(true)
     table.timestamps(true, true)
   })
 }
