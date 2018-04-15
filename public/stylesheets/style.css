@@ -12,11 +12,38 @@ a {
   max-width:100px;
 }
 
-.nav-links {
-  text-transform: uppercase;
+.body-logo {
+  max-width: 200px;
 }
 
+.nav-links {
+  text-transform: uppercase;
+  font-family: 'Arial Black', sans-serif;
+}
 
 .nav-item:hover {
   background-color: grey;
+}
+
+.left-pad {
+  padding-left: 10%;
+}
+
+.header-valign {
+  margin: 0px;
+	float: left;
+	width:100%;
+	position:absolute;
+	top: 45%;
+	transform: translateY(-50%) translateX(-50%);
+	left:50%;
+  padding-bottom: none;
+}
+
+.body-subtext {
+  color: white;
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 20px;
+  font-family: 'Arial Narrow', sans-serif;
 }
