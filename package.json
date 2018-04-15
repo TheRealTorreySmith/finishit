@@ -30,7 +30,7 @@
     "nodemon": "^1.17.3",
     "supertest": "^3.0.0"
   },
-  "engine": {
+  "engines": {
     "node": "8.11.1",
     "npm": "5.6.0"
   }
