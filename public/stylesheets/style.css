@@ -1,8 +1,22 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+} */
+
+.logo {
+  padding-top:10px;
+  max-width:100px;
+}
+
+.nav-links {
+  text-transform: uppercase;
+}
+
+
+.nav-item:hover {
+  background-color: grey;
 }
