@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "test": "mocha"
+    "test": "mocha",
+    "heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run;",
+    "knex": "knex"
   },
   "dependencies": {
     "bcrypt": "^2.0.0",
@@ -27,5 +29,8 @@
     "mocha": "^5.1.0",
     "nodemon": "^1.17.3",
     "supertest": "^3.0.0"
+  },
+  "engine": {
+    "node": "v9.9.0"
   }
 }
