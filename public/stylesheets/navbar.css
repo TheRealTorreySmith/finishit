@@ -1,0 +1,13 @@
+.logo {
+  padding-top:10px;
+  max-width:100px;
+}
+
+.nav-links {
+  text-transform: uppercase;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.nav-item:hover {
+  background-color: grey;
+}

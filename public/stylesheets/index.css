@@ -1,0 +1,58 @@
+/* body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+} */
+.parallax-container .parallax img {
+  opacity: 100 !important;
+}
+
+.body-logo {
+  max-width: 400px;
+}
+
+.left-pad {
+  padding-left: 10%;
+}
+
+.header-valign {
+	float: left;
+	width:100%;
+	position:absolute;
+	top: 45%;
+	transform: translateY(-50%) translateX(-50%);
+	left:50%;
+}
+
+.header-valign-buttons {
+  float: left;
+	width:100%;
+	position:absolute;
+	top: 80%;
+	transform: translateY(-50%) translateX(-50%);
+	left:50%;
+}
+
+.body-subtext {
+  color: white;
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 20px;
+  font-family: 'Arial Narrow', sans-serif;
+}
+
+.body-button1 {
+  margin-right: 5px;
+}
+
+.body-button2 {
+  margin-left: 5px;
+}
+
+.mission-statement {
+  text-align: center;
+  color: white;
+}

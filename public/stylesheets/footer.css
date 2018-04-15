@@ -1,0 +1,41 @@
+footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding:0;
+}
+
+.social-icon-facebook {
+  max-width:15px;
+  margin-right: 6px;
+  margin-left: 6px;
+  margin-top: 4px;
+  float: left;
+}
+
+.social-icon-twitter {
+  max-width:25px;
+  float: left;
+}
+
+.social-icon-linkedin {
+  max-width:18px;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.social-links {
+  margin: 5px;
+}
+
+.social-links-final {
+  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-right: 5px;
+}
+
+.bottom-pad {
+  margin-bottom: 20px;
+}
