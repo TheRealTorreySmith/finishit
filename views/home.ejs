@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <% include partials/header %>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/home.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% include partials/home-top-nav %>
+    
+    <% include partials/footer %>
   </body>
 </html>
