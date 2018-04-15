@@ -30,14 +30,25 @@ a {
 }
 
 .header-valign {
-  margin: 0px;
 	float: left;
 	width:100%;
 	position:absolute;
 	top: 45%;
 	transform: translateY(-50%) translateX(-50%);
 	left:50%;
-  padding-bottom: none;
+}
+
+.header-valign-buttons {
+  float: left;
+	width:100%;
+	position:absolute;
+	top: 80%;
+	transform: translateY(-50%) translateX(-50%);
+	left:50%;
+}
+
+.body-background {
+  background: url('../images/background.png'), no-repeat;
 }
 
 .body-subtext {
@@ -46,4 +57,51 @@ a {
   padding-top: 0px;
   font-size: 20px;
   font-family: 'Arial Narrow', sans-serif;
+}
+
+.body-button1 {
+  margin-right: 5px;
+}
+
+.body-button2 {
+  margin-left: 5px;
+}
+
+footer {
+  bottom: 0;
+}
+
+.social-icon-facebook {
+  max-width:15px;
+  margin-right: 6px;
+  margin-left: 6px;
+  margin-top: 4px;
+  float: left;
+}
+
+.social-icon-twitter {
+  max-width:25px;
+  float: left;
+}
+
+.social-icon-linkedin {
+  max-width:18px;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.social-links {
+  margin: 5px;
+}
+
+.social-links-final {
+  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-right: 5px;
+}
+
+.bottom-pad {
+  margin-bottom: 20px;
 }
