@@ -1,4 +1,10 @@
+
+
+
 $(document).ready(() => {
-  $('.carousel').carousel();
-  
+  $('.dropdown-trigger').dropdown();
+  $('.carousel').carousel()
+
+
+
 })
