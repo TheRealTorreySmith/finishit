@@ -37,11 +37,29 @@
 }
 
 .body-button1 {
+  font-size: 18px;
   margin-right: 5px;
+  background-color: #00aff0;
+  width: 105px;
+  height: 45px;
+  font-weight: bold;
+}
+
+.body-button1:hover {
+  background-color: #3683c7;
 }
 
 .body-button2 {
+  font-size: 18px;
   margin-left: 5px;
+  background-color: #00aff0;
+  width: 105px;
+  height: 45px;
+  font-weight: bold;
+}
+
+.body-button2:hover {
+  background-color: #3683c7;
 }
 
 .mission-statement {
