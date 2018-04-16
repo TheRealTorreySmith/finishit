@@ -6,7 +6,7 @@ return knex('users').del()
    return knex('users').insert([
      {
       id: 1,
-      username: 'mitchL',
+      username: 'mitchl',
       email: 'mitch@gmail.com',
       hashed_password: '$2a$12$C9AYYmcLVGYlGoO4vSZTPud9ArJwbGRsJ6TUsNULzR48z8fOnTXbS',  // youreawizard
       created_at: new Date('2016-06-29 14:26:16 UTC'),
@@ -14,7 +14,7 @@ return knex('users').del()
     },
     {
      id: 2,
-     username: 'torreyS',
+     username: 'torreys',
      email: 'torrey@gmail.com',
      hashed_password: '$2a$12$C9AYYmcLVGYlGoO4vSZTPud9ArJwbGRsJ6TUsNULzR48z8fOnTXbS',  // youreawizard
      created_at: new Date('2016-06-29 14:26:16 UTC'),
@@ -22,7 +22,7 @@ return knex('users').del()
    },
    {
     id: 3,
-    username: 'nathanB',
+    username: 'nathanb',
     email: 'nathan@gmail.com',
     hashed_password: '$2a$12$C9AYYmcLVGYlGoO4vSZTPud9ArJwbGRsJ6TUsNULzR48z8fOnTXbS',  // youreawizard
     created_at: new Date('2016-06-29 14:26:16 UTC'),
