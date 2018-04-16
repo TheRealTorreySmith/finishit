@@ -26,7 +26,14 @@
       <div class="row">
         <div class="container">
           <h4 class="center">Create interactive timelines to plan your course of action</h2>
-            <div id="visualization"></div>
+            <div id="visualization">
+              <div class="menu">
+                <input type="button" id="zoomIn" value="Zoom in">
+                <input type="button" id="zoomOut" value="Zoom out">
+                <input type="button" id="moveLeft" value="Move left">
+                <input type="button" id="moveRight" value="Move right">
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -43,5 +50,6 @@
     </div>
 
       <% include partials/footer %>
+      <script src="javascript/index.js"></script>
       </body>
 </html>

@@ -7,7 +7,7 @@ $(document).ready(() => {
     {
       id: 1,
       content: 'Do Stuff',
-      start: '2018-04-10',
+      start: '2018-04-16',
       end: '2018-04-20'
     },
     {
@@ -20,7 +20,13 @@ $(document).ready(() => {
   ])
 
   const options = {
-    configure: true,
+    template: (item, element, data) => {
+      return `<p>Title: ${item.content}<br>Start: ${data.start}<br>End: ${data.end}</p>`
+    },
+    margin: {
+      item: 20,
+      axis: 40
+    },
     editable: true,
     selectable: true
   }

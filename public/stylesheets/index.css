@@ -62,6 +62,23 @@
   background-color: #75bfff;
 }
 
+.vis-timeline {
+  border: 2px solid #00aff0;
+  font-family: 'Arial Narrow';
+  font-size: 12px;
+  background: grey;
+}
+
+.vis-item,
+.vis-item.vis-line {
+  border-width: 3px;
+}
+
+.vis-item.vis-dot {
+  border-width: 10px;
+  border-radius: 10px;
+}
+
 .mission-statement {
   text-align: center;
   color: white;
