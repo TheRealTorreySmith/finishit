@@ -3,7 +3,7 @@ const router = express.Router()
 
 /* GET LOGIN PAGE */
 const login = (req, res, next) => {
-  res.render('login', { title: ' The Login Page' })
+  res.render('login-signup', { title: ' The Login Page' })
 }
 
 

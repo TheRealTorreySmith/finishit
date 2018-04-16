@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.collapsible {
+  width: 60%;
+}
+
+.btn {
+  color: white;
+}

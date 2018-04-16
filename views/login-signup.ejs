@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/index.css">
+  <link rel="stylesheet" href="/stylesheets/navbar.css">
+  <link rel="stylesheet" href="/stylesheets/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.css">
+  <link rel="stylesheet" href="/stylesheets/login-signup.css">
+</head>
+
+<body>
+  <header>
+    <div class="navbar-fixed">
+      <nav class="black lighten-2" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="/" class="brand-logo"><img class="logo" src="/images/finishit-white.png"></a>
+          <ul class="right hide-on-med-and-down nav-links">
+            <li class="nav-item"><a href="/login">Signup</a></li>
+            <li class="nav-item"><a href="/login">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <ul class="collapsible popout">
+      <li>
+        <div class="collapsible-header center-align">Login</div>
+        <div class="collapsible-body">
+          <form class="form" id='login-form' action="#" method="post">
+
+            <label for="username">USERNAME:</label>
+            <input type="text" id='username' name="username" required>
+
+            <label for="password">PASSWORD:</label>
+            <input type="text" id="password" name="password" required>
+
+            <input type="submit" id='submit-button' class='btn green darken-3 waves-effect waves-light' value='Login'>
+          </form>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header center-align">Signup</div>
+        <div class="collapsible-body">
+          <form class="form" id='signup-form' action="#" method="post">
+
+            <label for="username">USERNAME:</label>
+            <input type="text" id='username' name="username" required>
+
+            <label for="email">EMAIL:</label>
+            <input type="text" id='email' name="email" required>
+
+            <label for="password">PASSWORD:</label>
+            <input type="text" id="password" name="password" required>
+
+            <input type="submit" id='submit-button' class='btn green darken-3 waves-effect waves-light' value='Signup'>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l5 m5 s12">
+          <h5 class="white-text social-links">Social Media</h5>
+          <img class="social-icon-facebook" src="/images/facebook.png">
+          <p class="social-links">Facebook</p>
+          <img class="social-icon-twitter" src="/images/twitter.png">
+          <p class="social-links">Twitter</p>
+          <img class="social-icon-linkedin" src="/images/linkedin.png">
+          <p class="social-links-final">LinkedIn</p>
+        </div>
+
+        <div class="col l2 hide-on-small-and-down">
+        </div>
+
+        <div class="col l5 m5 s12 right-align bottom-pad">
+          <h5 class="white-text social-links">Contributors</h5>
+          <p class="social-links">Torrey Smith</p>
+          <p class="social-links">Mitch Lembke</p>
+          <p class="social-links-final">Nathan Burgo</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+  <script type="text/javascript" src="javascript/index.js"></script>
+  <script type="text/javascript" src="javascript/login-signup.js"></script>
+</body>
+
+</html>
