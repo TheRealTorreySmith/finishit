@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% include partials/header %>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include partials/head %>
+    <link rel='stylesheet' href='/stylesheets/navbar.css' />
     <link rel='stylesheet' href='/stylesheets/home.css' />
   </head>
   <body>
     <% include partials/home-top-nav %>
-    
-    <% include partials/footer %>
+
+    <div class="container">
+      <div class="row">
+        <div class="default-timeline col s12">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+
+          <div class="carousel timeline-carousel col s12">
+
+            <div class="carousel-item">
+              <div class="time-container">
+                <div class="time">
+                  <div class="side">
+                    <a href="#one!">FRONTSIDE<img src="#"></a>
+                  </div>
+                  <div class="side back">BACKSIDE
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="time-container">
+                <div class="time">
+                  <div class="side">
+                    <a href="#two!">FRONTSIDE<img src="#"></a>
+                  </div>
+                  <div class="side back">BACKSIDE
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="time-container">
+                <div class="time">
+                  <div class="side">
+                    <a href="#three!">FRONTSIDE<img src="#"></a>
+                  </div>
+                  <div class="side back">BACKSIDE
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="time-container">
+                <div class="time">
+                  <div class="side">
+                    <a href="#four!">FRONTSIDE<img src="#"></a>
+                  </div>
+                  <div class="side back">BACKSIDE
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="time-container">
+                <div class="time">
+                  <div class="side">
+                    <a href="#five!">FRONTSIDE.<img src="#"></a>
+                  </div>
+                  <div class="side back">BACKSIDE
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="carousel-fixed-item center">
+          <a class="btn darken-text-2">Last</a>
+          <a class="btn darken-text-2">Next</a><br>
+          <button class="btn-small darken-text-2">1</button>
+          <button class="btn-small darken-text-2">2</button>
+          <button class="btn-small darken-text-2">3</button>
+        </div>
+      </div>
+    </div>
+    <% include partials/foot %>
+    <script type="text/javascript" src="javascript/home.js"></script>
   </body>
 </html>
