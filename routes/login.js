@@ -27,14 +27,12 @@ const isEmailValid = (req, res, next) => {
     if(req.body.email === undefined){
       res.type('text/plain')
       res.status(400).json({
-        type: 'email-blank',
         message: 'Email must not be blank'
       })
       console.log('Email must not be blank')
     } else if (allEmails.includes(req.body.email)) {
       res.type('text/plain')
       res.status(400).json({
-        type: 'email-taken',
         message: `${req.body.email} already exists. Please choose another or login with that email.`
       })
     } else {
@@ -43,25 +41,6 @@ const isEmailValid = (req, res, next) => {
   })
 }
 
-const doesEmailExist = (req, res, next) => {
-  knex('users')
-    .where('email', req.body.email)
-    .then((results) => {
-      if (results.length>0) {
-        // Email exists already, create new ValidationError, pass to error handler with next()
-        // The format of this Error object is specific so it matches the other validation errors from the Joi rules
-        const errors = [
-          {
-            field: 'email',
-            location: 'body',
-            messages: ['Email already used, ya dingus.']
-          }
-        ]
-      const evError = new ev.ValidationError(errors, { status: 400, statusText: 'Bad Request' })
-      return next(evError)
-    }
-  })
-}
 //
 // const isPasswordValid = (req, res, next) => {
 //     if(req.body.password !== req.body.confirmPassword) {
@@ -77,8 +56,7 @@ const doesEmailExist = (req, res, next) => {
 
 const signup = (req, res, next) => {
   console.log(req.body)
-  res.end()
-  // res.redirect(`/home/${req.body.username}`)
+  res.redirect(`/`)
 }
 
 

@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "test": "mocha",
-    "heroku-postbuild": "knex migrate:rollback; knex migrate:latest;",
+    "heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run;",
     "knex": "knex"
   },
   "dependencies": {
