@@ -7,3 +7,22 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.vis-item {
+  color: grey;
+  background-color: lightblue;
+}
+
+.vis-today {
+  background: tomato;
+}
+
+/* gray background in weekends, white text color */
+/* .vis-time-axis .vis-grid.vis-saturday,
+.vis-time-axis .vis-grid.vis-sunday {
+  background: gray;
+}
+.vis-time-axis .vis-text.vis-saturday,
+.vis-time-axis .vis-text.vis-sunday {
+  color: white;
+} */
