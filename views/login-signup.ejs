@@ -2,34 +2,21 @@
 <html>
 
 <head>
-  <title>
-    <%= title %>
-  </title>
+  <% include partials/header %>  
+  <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/index.css">
   <link rel="stylesheet" href="/stylesheets/navbar.css">
-  <link rel="stylesheet" href="/stylesheets/footer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.css">
   <link rel="stylesheet" href="/stylesheets/login-signup.css">
 </head>
 
 <body>
   <header>
-    <div class="navbar-fixed">
-      <nav class="black lighten-2" role="navigation">
-        <div class="nav-wrapper container">
-          <a id="logo-container" href="/" class="brand-logo"><img class="logo" src="/images/finishit-white.png"></a>
-          <ul class="right hide-on-med-and-down nav-links">
-            <li class="nav-item"><a href="/login">Signup</a></li>
-            <li class="nav-item"><a href="/login">Login</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <% include partials/login-signup-nav %>
   </header>
-  <main>
+  <main class='valign-wrapper'>
     <ul class="collapsible popout">
       <li>
-        <div class="collapsible-header center-align">Login</div>
+        <div class="collapsible-header">LOGIN</div>
         <div class="collapsible-body">
           <form class="form" id='login-form' action="#" method="post">
 
@@ -39,12 +26,12 @@
             <label for="password">PASSWORD:</label>
             <input type="text" id="password" name="password" required>
 
-            <input type="submit" id='submit-button' class='btn green darken-3 waves-effect waves-light' value='Login'>
+            <input type="submit" id='login-submit-button' class='btn waves-effect waves-light' value='Login'>
           </form>
         </div>
       </li>
       <li>
-        <div class="collapsible-header center-align">Signup</div>
+        <div class="collapsible-header">SIGNUP</div>
         <div class="collapsible-body">
           <form class="form" id='signup-form' action="#" method="post">
 
@@ -57,7 +44,7 @@
             <label for="password">PASSWORD:</label>
             <input type="text" id="password" name="password" required>
 
-            <input type="submit" id='submit-button' class='btn green darken-3 waves-effect waves-light' value='Signup'>
+            <input type="submit" id='signup-submit-button' class='btn waves-effect waves-light' value='Signup'>
           </form>
         </div>
       </li>

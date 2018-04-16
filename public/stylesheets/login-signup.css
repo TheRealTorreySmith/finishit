@@ -6,12 +6,23 @@ body {
 
 main {
   flex: 1 0 auto;
+  justify-content: center;
 }
 
 .collapsible {
   width: 60%;
+  font-family: 'Lato', sans-serif;
+}
+
+.collapsible-header {
+  letter-spacing: 5px;
+  justify-content: center;
+}
+
+.collapsible-header:focus {
+  outline:none;
 }
 
 .btn {
-  color: white;
+  color: white !important;
 }
