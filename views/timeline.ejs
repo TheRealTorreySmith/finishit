@@ -2,13 +2,15 @@
 <html>
   <head>
     <% include partials/head %>
+    <link href="/vis/dist/vis.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/stylesheets/timeline.css">
   </head>
   <body>
     <main>
       <h1><%= title %></h1>
-      <p>Welcome to <%= title %></p>
+      <div id="visualization"></div>
     </main>
+    <script src="/vis/dist/vis.js"></script>
     <% include partials/footer %>
   </body>
 </html>

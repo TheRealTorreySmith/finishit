@@ -1,5 +1,5 @@
 footer {
-  padding:0;  
+  padding:0;
 }
 
 .social-icon-facebook {
@@ -35,4 +35,8 @@ footer {
 
 .bottom-pad {
   margin-bottom: 20px;
+}
+
+footer .row .col.s12 {
+  width: 50%;
 }
