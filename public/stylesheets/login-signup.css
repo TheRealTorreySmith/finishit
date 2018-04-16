@@ -37,3 +37,7 @@ main {
 .btn {
   color: white !important;
 }
+
+.signup-error {
+  color: tomato;
+}

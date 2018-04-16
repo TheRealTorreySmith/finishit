@@ -20,11 +20,11 @@
         <div class="collapsible-body">
           <form class="form" id='login-form' action="#" method="post">
 
-            <label for="username">USERNAME:</label>
-            <input type="text" id='username' name="username" required>
+            <label for="username-login">USERNAME:</label>
+            <input type="text" id='username-login' name="usernameLogin" required>
 
-            <label for="password">PASSWORD:</label>
-            <input type="password" id="password" name="password" required>
+            <label for="password-login">PASSWORD:</label>
+            <input type="password" id="password-login" name="passwordLogin" required>
 
             <input type="submit" id='login-submit-button' class='btn waves-effect waves-light' value='Login'>
           </form>
@@ -35,17 +35,21 @@
         <div class="collapsible-body">
           <form class="form" id='signup-form' action="#" method="post">
 
-            <label for="username">USERNAME:</label>
-            <input type="text" id='username' name="username" required>
+            <label for="username-signup">USERNAME:</label>
+            <span class="signup-error signup-form-username-error"></span>
+            <input type="text" id='username-signup' name="usernameSignup" required>
 
-            <label for="email">EMAIL:</label>
-            <input type="email" id='email' name="email" required>
+            <label for="email-signup">EMAIL:</label>
+            <span class="signup-error signup-form-email-error"></span>
+            <input type="email" id='email-signup' name="emailSignup" required>
 
-            <label for="password">PASSWORD:</label>
-            <input type="password" id="password" name="password" required>
+            <label for="password-signup">PASSWORD:</label>
+            <span class="signup-error signup-form-password-error"></span>
+            <input type="password" id="password-signup" name="passwordSignup" required>
 
-            <label for="confirm-password">CONFIRM PASSWORD:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
+            <label for="confirm-password-signup">CONFIRM PASSWORD:</label>
+            <span class="signup-error signup-form-password-error"></span>
+            <input type="password" id="confirm-password-signup" name="confirmPasswordSignup" required>
 
             <input type="submit" id='signup-submit-button' class='btn waves-effect waves-light' value='Signup'>
           </form>
