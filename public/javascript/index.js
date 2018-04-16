@@ -1,6 +1,6 @@
 $(document).ready(() => {
   $('.parallax').parallax()
-  const container = document.getElementById('visualization');
+  const container = document.getElementById('visualization')
 
   // Create a DataSet (allows two way data-binding)
   const items = new vis.DataSet([
@@ -15,5 +15,9 @@ $(document).ready(() => {
   const options = {}
 
   // Create a Timeline
-  const timeline = new vis.Timeline(container, items, options);
+  const timeline = new vis.Timeline(container, items, options)
 })
+// 
+// $('#login').on('click', (event) => {
+//
+// })
