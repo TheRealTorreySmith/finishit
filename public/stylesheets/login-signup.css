@@ -2,6 +2,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: url("/images/background.png");
 }
 
 main {
@@ -14,7 +15,17 @@ main {
   font-family: 'Lato', sans-serif;
 }
 
+.collapsible input,
+.collapsible label {
+  color: white;
+  font-size: 1.1em;
+  cursor:pointer;
+}
+
+
+
 .collapsible-header {
+  font-size: 1.5em;
   letter-spacing: 5px;
   justify-content: center;
 }
