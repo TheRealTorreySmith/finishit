@@ -34,10 +34,9 @@
         <div class="collapsible-header" id="signup-collapsible">SIGNUP</div>
         <div class="collapsible-body">
           <form class="form" id="signup-form" method="post">
-
             <label for="username-signup">USERNAME:</label>
             <span class="signup-error signup-form-username-error"></span>
-            <input type="text" id='username-signup' name="usernameSignup" required>
+            <input min="8" max="30" type="text" id='username-signup' name="usernameSignup" required>
 
             <label for="email-signup">EMAIL:</label>
             <span class="signup-error signup-form-email-error"></span>
@@ -45,15 +44,14 @@
 
             <label for="password-signup">PASSWORD:</label>
             <span class="signup-error signup-form-password-error"></span>
-            <input type="password" id="password-signup" name="passwordSignup" required>
+            <input min="8" max="30" type="password" id="password-signup" name="passwordSignup" required>
 
             <label for="confirm-password-signup">CONFIRM PASSWORD:</label>
             <span class="signup-error signup-form-password-error"></span>
-            <input type="password" id="confirm-password-signup" name="confirmPasswordSignup" required>
+            <input min="8" max="30" type="password" id="confirm-password-signup" name="confirmPasswordSignup" required>
 
             <button id='signup-submit-button' class='btn waves-effect waves-light'> Signup </button>
             <span class="signup-error" id="general-error"></span>
-            <span id="signup-success"></span>
           </form>
         </div>
       </li>

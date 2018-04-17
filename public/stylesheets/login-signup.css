@@ -46,4 +46,5 @@ main {
 
 .signup-error {
   color: tomato;
+  margin-left: 1em;
 }

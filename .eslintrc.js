@@ -19,6 +19,9 @@ module.exports = {
     "comma-dangle": "off",
     "arrow-body-style": "off",
     "no-unused-vars": "off",
-    "no-lonely-if": "off"
+    "no-lonely-if": "off",
+    "consistent-return": "off",
+    "newline-per-chained-call": "off",
+    "no-unneeded-ternary": "off"
   }
 };
