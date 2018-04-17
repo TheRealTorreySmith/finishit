@@ -117,7 +117,6 @@ $(document).ready(() => {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(createRequest()),
         success: (data) => {
-          console.log(data)
           return data
         }
       }) // end ajax
