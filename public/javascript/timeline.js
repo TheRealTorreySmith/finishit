@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $(document).ready(() => {
   // DOM element where the Timeline will be attached
   const container = document.getElementById('visual')
