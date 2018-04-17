@@ -179,3 +179,11 @@ transform: translateY(1px);
 #modal2 {
   margin-top: 50px;
 }
+
+#modal3 {
+  margin-top: 50px;
+}
+
+.new-project-name {
+  margin: 0px 120px;
+}

@@ -10,18 +10,18 @@ const lastButton = () => {
 const numButton = (event) => {
   const num = $(event.target)[0].innerHTML
   $('.carousel').carousel('set', num)
-
 }
 
-$('.modal').modal();
+
 
 // DOCUMENT READY
 $(document).ready(() => {
   // EVENT HANDLERS
-  $('.dropdown-trigger').dropdown();
+  $('.dropdown-trigger').dropdown()
   $('.carousel').carousel()
   $('.next').click(nextButton)
   $('.prev').click(lastButton)
   $('.btn-small').click(numButton)
-
+  $('.modal').modal()
+  
 })
