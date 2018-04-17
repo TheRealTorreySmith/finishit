@@ -2,10 +2,6 @@
 $(document).ready(() => {
   // DOM element where the Timeline will be attached
   const container = document.getElementById('visual')
-=======
-// DOM element where the Timeline will be attached
-const container = $('#vis-container');
->>>>>>> Added client side validation on signup form
 
   // Create a DataSet (allows two way data-binding)
   const items = new vis.DataSet([
@@ -17,19 +13,11 @@ const container = $('#vis-container');
     { id: 6, content: 'item 6', start: '2013-04-27' }
   ])
 
-<<<<<<< HEAD
-  // Configuration for the Timeline
-  const options = {
-    selectable: true,
-    editable: true
-  }
-=======
 // Configuration for the Timeline
 const options = {
   editable: true,
   selectable: true
 }
->>>>>>> Added client side validation on signup form
 
   // Create a Timeline
   const timeline = new vis.Timeline(container, items, options)
