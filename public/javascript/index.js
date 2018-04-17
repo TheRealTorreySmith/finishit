@@ -26,15 +26,37 @@ $(document).ready(() => {
     margin: {
       item: 20,
       axis: 40
-    },
-    editable: true,
-    selectable: true
+    }
   }
 
   // Create a Timeline
   const timeline = new vis.Timeline(container, items, options)
+
+  const move = (percentage) => {
+    var range = timeline.getWindow();
+    var interval = range.end - range.start;
+
+    timeline.setWindow({
+      start: range.start.valueOf() - (interval * percentage),
+      end: range.end.valueOf() - (interval * percentage)
+    });
+  }
+
+  // attach events to the navigation buttons
+  document.getElementById('zoomIn').onclick = () => {
+    timeline.zoomIn(0.2)
+  }
+  document.getElementById('zoomOut').onclick = () => {
+    timeline.zoomOut(0.2)
+  }
+  document.getElementById('moveLeft').onclick = () => {
+    move(0.2)
+  }
+  document.getElementById('moveRight').onclick = () => {
+    move(-0.2)
+  }
+  document.getElementById('toggleRollingMode').onclick = () => {
+    timeline.toggleRollingMode()
+  }
+
 })
-//
-// $('#login').on('click', (event) => {
-//
-// })
