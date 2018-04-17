@@ -12,11 +12,11 @@ $(document).ready(() => {
     { id: 6, content: 'item 6', start: '2013-04-27' }
   ])
 
-// Configuration for the Timeline
-const options = {
-  editable: true,
-  selectable: true
-}
+  // Configuration for the Timeline
+  const options = {
+    editable: true,
+    selectable: true
+  }
 
   // Create a Timeline
   const timeline = new vis.Timeline(container, items, options)
