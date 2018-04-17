@@ -91,6 +91,7 @@ $(document).ready(() => {
       event.preventDefault()
         // Make POST request with form field data as POST body
         if(passwordsMatch === true  && emailIsTaken === false && userNameIsTaken === false) {
+          $('#general-error').empty()
           $.ajax({
             url: '/login',
             type: 'POST',
