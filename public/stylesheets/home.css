@@ -58,11 +58,30 @@ transform: translateY(1px);
   margin-top: 30px;
 }
 
+
+/* CAROUSEL */
 .timeline-carousel {
+  background-color: black;
+  margin-bottom: 10px;
   height: 320px;
 }
 
-.btn {
+.btn.edit-button,
+.btn.delete-button {
+  background-color: black;
+  font-family: 'Lato', sans-serif;
+}
+
+.btn.edit-button:hover,
+.btn.delete-button:hover {
+  background-color: black;
+}
+
+.btn.edit-button:focus {
+  background-color: black;
+}
+
+.btn.darken-text-2{
   background-color: black;
   font-family: 'Lato', sans-serif;
 }
@@ -81,6 +100,10 @@ transform: translateY(1px);
   font-family: 'Lato', sans-serif;
 }
 
+.btn-small:focus {
+  background-color: black;
+}
+
 .btn-small:active {
   transform: translateY(1px);
 }
@@ -88,6 +111,7 @@ transform: translateY(1px);
 .btn-small:hover {
   background-color: #00aff0;
 }
+
 
 
 /* CARD FLIP */
@@ -124,7 +148,34 @@ transform: translateY(1px);
 .time .back {
   background: #00aff0;
   color: #eaeaed;
-  line-height: 150px;
-  text-align: center;
+  line-height: 96px;
   transform: rotateY(180deg);
+}
+
+/* MODALS */
+
+.modal-action {
+  background: black;
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+.modal-action:hover {
+  background-color: #00aff0;
+}
+
+.modal-action:active {
+transform: translateY(1px);
+}
+
+.modal-content {
+  text-align: center;
+}
+
+#modal1 {
+  margin-top: 50px;
+}
+
+#modal2 {
+  margin-top: 50px;
 }

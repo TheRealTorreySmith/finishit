@@ -13,7 +13,6 @@
         </div>
       </div>
     </div>
-
     <div class="container">
       <div class="row">
           <div class="carousel timeline-carousel col s12">
@@ -21,20 +20,12 @@
               <div class="time-container">
                 <div class="time">
                   <div class="side">
-                    <a href="#one!">FRONTSIDE<img src="#"></a>
+                    <a href="#one!"><img height="200px" width="200px" src="https://www.algotech.solutions/blog/wp-content/uploads/2016/02/angular-reactive-chart-hero.jpg"></a>
                   </div>
-                  <div class="side back">BACKSIDE
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="time-container">
-                <div class="time">
-                  <div class="side">
-                    <a href="#two!">FRONTSIDE<img src="#"></a>
-                  </div>
-                  <div class="side back">BACKSIDE
+                  <div class="side back">
+                    <button href="#modal1" class="waves-effect waves-light btn modal-trigger edit-button">Edit</button>
+                    <div class="divider"></div>
+                    <button href="#modal2" class="waves-effect waves-light btn modal-trigger delete-button">Delete</button>
                   </div>
                 </div>
               </div>
@@ -43,20 +34,12 @@
               <div class="time-container">
                 <div class="time">
                   <div class="side">
-                    <a href="#three!">FRONTSIDE<img src="#"></a>
+                    <a href="#two!"><img height="200px" width="200px" src="https://h1bportal.com/wp-content/uploads/2016/10/Chart-H1Bportal.jpg"></a>
                   </div>
-                  <div class="side back">BACKSIDE
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="time-container">
-                <div class="time">
-                  <div class="side">
-                    <a href="#four!">FRONTSIDE<img src="#"></a>
-                  </div>
-                  <div class="side back">BACKSIDE
+                  <div class="side back">
+                    <button href="#modal1" class="waves-effect waves-light btn modal-trigger edit-button">Edit</button>
+                    <div class="divider"></div>
+                    <button href="#modal2" class="waves-effect waves-light btn modal-trigger delete-button">Delete</button>
                   </div>
                 </div>
               </div>
@@ -65,9 +48,40 @@
               <div class="time-container">
                 <div class="time">
                   <div class="side">
-                    <a href="#five!">FRONTSIDE.<img src="#"></a>
+                    <a href="#three!"><img height="200px" width="200px" src="http://librarianinblack.net/librarianinblack/wp-content/uploads/TypePadFiles/graph_1.jpg"></a>
                   </div>
-                  <div class="side back">BACKSIDE
+                  <div class="side back">
+                    <button href="#modal1" class="waves-effect waves-light btn modal-trigger edit-button">Edit</button>
+                    <div class="divider"></div>
+                    <button href="#modal2" class="waves-effect waves-light btn modal-trigger delete-button">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="time-container">
+                <div class="time">
+                  <div class="side">
+                    <a href="#four!"><img height="200px" width="200px" src="https://peltiertech.com/images/img200810/EBarB4.png"></a>
+                  </div>
+                  <div class="side back">
+                    <button href="#modal1" class="waves-effect waves-light btn modal-trigger edit-button">Edit</button>
+                    <div class="divider"></div>
+                    <button href="#modal2" class="waves-effect waves-light btn modal-trigger delete-button">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="time-container">
+                <div class="time">
+                  <div class="side">
+                    <a href="#five!"><img height="200px" width="200px" src="http://www.consultantjournal.com/wp-content/uploads/chart%201.jpg"></a>
+                  </div>
+                  <div class="side back">
+                    <button href="#modal1" class="waves-effect waves-light btn modal-trigger edit-button">Edit</button>
+                    <div class="divider"></div>
+                    <button href="#modal2" class="waves-effect waves-light btn modal-trigger delete-button">Delete</button>
                   </div>
                 </div>
               </div>
@@ -82,6 +96,33 @@
         </div>
       </div>
     </div>
+
+    <!-- MODALS -->
+
+    <!-- EDIT MODAL -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h5>Edit this project?</h5>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">No</a>
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+        </div>
+      </div>
+    <!-- END OF EDIT MODAL -->
+
+    <!-- DELETE MODAL -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+          <h5>Delete this project?</h5>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close btn-flat">No</a>
+          <a href="#!" class="modal-action modal-close btn-flat">Yes</a>
+        </div>
+      </div>
+    <!-- END OF DELETE MODAL -->
+
     <% include partials/footer %>
     <script type="text/javascript" src="javascript/home.js"></script>
   </body>

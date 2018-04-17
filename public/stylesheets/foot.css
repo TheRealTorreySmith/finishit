@@ -28,7 +28,7 @@ footer {
   font-family: 'Lato', sans-serif;
 }
 
-.social-links:hover {
+.clickables:hover {
   cursor: pointer;
   color: #00aff0;
 }
@@ -38,11 +38,6 @@ footer {
   margin-top: 0px;
   margin-right: 5px;
   font-family: 'Lato', sans-serif;
-}
-
-.social-links-final:hover {
-  cursor: pointer;
-  color: #00aff0;
 }
 
 .bottom-pad {
