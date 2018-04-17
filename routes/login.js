@@ -19,27 +19,27 @@ const getAllUsers = (req, res, next) => {
   })
 }
 
-const isEmailValid = (req, res, next) => {
-  knex('users')
-    .select('email')
-    .then(emailsInDB => {
-      const allEmails = emailsInDB.map(x => x.email)
-    if(req.body.email === undefined){
-      res.type('text/plain')
-      res.status(400).json({
-        message: 'Email must not be blank'
-      })
-      console.log('Email must not be blank')
-    } else if (allEmails.includes(req.body.email)) {
-      res.type('text/plain')
-      res.status(400).json({
-        message: `${req.body.email} already exists. Please choose another or login with that email.`
-      })
-    } else {
-      next()
-    }
-  })
-}
+// const isEmailValid = (req, res, next) => {
+//   knex('users')
+//     .select('email')
+//     .then(emailsInDB => {
+//       const allEmails = emailsInDB.map(x => x.email)
+//     if(req.body.email === undefined){
+//       res.type('text/plain')
+//       res.status(400).json({
+//         message: 'Email must not be blank'
+//       })
+//       console.log('Email must not be blank')
+//     } else if (allEmails.includes(req.body.email)) {
+//       res.type('text/plain')
+//       res.status(400).json({
+//         message: `${req.body.email} already exists. Please choose another or login with that email.`
+//       })
+//     } else {
+//       next()
+//     }
+//   })
+// }
 
 //
 // const isPasswordValid = (req, res, next) => {
@@ -56,12 +56,12 @@ const isEmailValid = (req, res, next) => {
 
 const signup = (req, res, next) => {
   console.log(req.body)
-  res.redirect(`/`)
+  res.end()
 }
 
 
 router.get('/', login)
 router.get('/users', getAllUsers)
-router.post('/', isEmailValid, signup )
+router.post('/', signup)
 
 module.exports = router

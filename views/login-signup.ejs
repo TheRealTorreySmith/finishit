@@ -33,7 +33,7 @@
       <li>
         <div class="collapsible-header" id="signup-collapsible">SIGNUP</div>
         <div class="collapsible-body">
-          <form class="form" id='signup-form' action="#" method="post">
+          <form class="form" id="signup-form" method="post">
 
             <label for="username-signup">USERNAME:</label>
             <span class="signup-error signup-form-username-error"></span>
@@ -51,8 +51,9 @@
             <span class="signup-error signup-form-password-error"></span>
             <input type="password" id="confirm-password-signup" name="confirmPasswordSignup" required>
 
-            <input type="submit" id='signup-submit-button' class='btn waves-effect waves-light' value='Signup'>
+            <button id='signup-submit-button' class='btn waves-effect waves-light'> Signup </button>
             <span class="signup-error" id="general-error"></span>
+            <span id="signup-success"></span>
           </form>
         </div>
       </li>

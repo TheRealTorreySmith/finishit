@@ -19,13 +19,8 @@
 	left:50%;
 }
 
-.header-valign-buttons {
-  float: left;
-	width:100%;
-	position:absolute;
-	top: 80%;
-	transform: translateY(-50%) translateX(-50%);
-	left:50%;
+.body-buttons {
+  margin-top: 50px;
 }
 
 .body-subtext {
@@ -39,44 +34,83 @@
 .body-button1 {
   font-size: 18px;
   margin-right: 5px;
-  background-color: #00aff0;
+  background-color: black;
   width: 105px;
   height: 45px;
   font-weight: bold;
 }
 
 .body-button1:hover {
-  background-color: #75bfff;
+  background-color: #00aff0;
 }
 
 .body-button2 {
   font-size: 18px;
   margin-left: 5px;
-  background-color: #00aff0;
+  background-color: black;
   width: 105px;
   height: 45px;
   font-weight: bold;
 }
 
 .body-button2:hover {
-  background-color: #75bfff;
+  background-color: #00aff0;
+}
+
+#visualization {
+  position: relative;
+}
+
+.vis-button {
+  background-color: black;
+  color: white;
+  border: 0px;
+  font-family: 'Lato', sans-serif;
+  height: 30px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  z-index: 9999;
 }
 
 .vis-timeline {
   border: 2px solid #00aff0;
   font-family: 'Arial Narrow';
   font-size: 12px;
-  background: grey;
+  background: #00aff0;
+  opacity: .7;
+  color: white;
 }
 
 .vis-item,
 .vis-item.vis-line {
-  border-width: 3px;
+  border: 3px solid black;;
+  background-color: black;
+  opacity: 0.9;
+  height: 60px;
 }
 
 .vis-item.vis-dot {
   border-width: 10px;
   border-radius: 10px;
+}
+
+.vis-title {
+  color:white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  line-height: 0px;
+}
+
+.vis-time-axis .vis-text {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
 }
 
 .mission-statement {

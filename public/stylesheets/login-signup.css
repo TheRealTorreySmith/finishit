@@ -36,6 +36,12 @@ main {
 
 .btn {
   color: white !important;
+  background-color: #00aff0;
+}
+
+.btn:focus {
+  color: white !important;
+  background-color: #00aff0;
 }
 
 .signup-error {

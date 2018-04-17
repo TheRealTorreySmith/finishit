@@ -7,6 +7,7 @@ $(document).ready(() => {
     {
       id: 1,
       content: 'Do Stuff',
+      description: 'I need to do a bunch of stuff',
       start: '2018-04-16',
       end: '2018-04-20'
     },
@@ -15,26 +16,64 @@ $(document).ready(() => {
       content: 'File Taxes',
       start: '2018-04-16',
       end: '2018-04-18'
+    },
+    {
+      id: 3,
+      content: 'Write Novel',
+      start: '2018-04-18',
+      end: '2018-04-19'
+    },
+    {
+      id: 4,
+      content: 'Bathe Dog',
+      start: '2018-04-14',
+      end: '2018-04-22'
+    },
+    {
+      id: 5,
+      content: 'Bathe Ostrich',
+      start: '2018-04-20',
+      end: '2018-04-22'
     }
 
   ])
 
   const options = {
     template: (item, element, data) => {
-      return `<p>Title: ${item.content}<br>Start: ${data.start}<br>End: ${data.end}</p>`
+      return `<p class="vis-title">${item.content}</p><br><p>${item.description}</p>`
     },
-    margin: {
-      item: 20,
-      axis: 40
-    },
-    editable: true,
-    selectable: true
+    zoomable: false,
+    timeAxis: { scale: 'day' },
+    height: '400px',
+    orientation: { axis: 'top' },
+    verticalScroll: true,
   }
 
   // Create a Timeline
   const timeline = new vis.Timeline(container, items, options)
+
+  const move = (percentage) => {
+    var range = timeline.getWindow();
+    var interval = range.end - range.start;
+
+    timeline.setWindow({
+      start: range.start.valueOf() - (interval * percentage),
+      end: range.end.valueOf() - (interval * percentage)
+    });
+  }
+
+  // attach events to the navigation buttons
+  document.getElementById('zoomIn').onclick = () => {
+    timeline.zoomIn(0.2)
+  }
+  document.getElementById('zoomOut').onclick = () => {
+    timeline.zoomOut(0.2)
+  }
+  document.getElementById('moveLeft').onclick = () => {
+    move(0.2)
+  }
+  document.getElementById('moveRight').onclick = () => {
+    move(-0.2)
+  }
+
 })
-//
-// $('#login').on('click', (event) => {
-//
-// })
