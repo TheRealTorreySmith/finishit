@@ -1,14 +1,17 @@
 const express = require('express')
+const env = require('dotenv').config()
 
 const router = express.Router()
 const knex = require('../knex')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
+const KEY = process.env.JWT_KEY
 
 const { validateBody, schemas } = require('../helpers/route-helpers')
 
 /* GET LOGIN PAGE */
 const login = (req, res, next) => {
-  const errors = req.validationErrors()
   res.render('login-signup', { title: ' The Login Page' })
 }
 
@@ -32,7 +35,9 @@ const addUser = (req, res, next) => {
       hashed_password: hashedPass
     })
     .then(() => {
-      res.status(200).redirect('/home')
+      const token = jwt.sign({ username: req.body.signupUsername }, KEY)
+      res.cookie('token', token, { httpOnly: true })
+      res.status(200).json({ message: 'success' })
     })
 }
 

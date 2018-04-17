@@ -117,7 +117,9 @@ $(document).ready(() => {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(createRequest()),
         success: (data) => {
-          return data
+          if (data.message === 'success') {
+            window.location = 'http://localhost:3000/home'
+          }
         }
       }) // end ajax
     } else {
