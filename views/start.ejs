@@ -18,15 +18,17 @@
       <li>
         <div class="collapsible-header" id="login-collapsible">LOGIN</div>
         <div class="collapsible-body">
-          <form class="form" id='login-form' action="#" method="post">
+          <form class="form" id='login-form' method="post">
 
             <label for="username-login">USERNAME:</label>
+            <span class="signup-error login-form-username-error"></span>
             <input type="text" id='username-login' name="usernameLogin" required>
 
             <label for="password-login">PASSWORD:</label>
             <input type="password" id="password-login" name="passwordLogin" required>
 
             <input type="submit" id='login-submit-button' class='btn waves-effect waves-light' value='Login'>
+            <span class="signup-error" id="general-login-error"></span>
           </form>
         </div>
       </li>
@@ -34,10 +36,9 @@
         <div class="collapsible-header" id="signup-collapsible">SIGNUP</div>
         <div class="collapsible-body">
           <form class="form" id="signup-form" method="post">
-
             <label for="username-signup">USERNAME:</label>
             <span class="signup-error signup-form-username-error"></span>
-            <input type="text" id='username-signup' name="usernameSignup" required>
+            <input min="8" max="30" type="text" id='username-signup' name="usernameSignup" required>
 
             <label for="email-signup">EMAIL:</label>
             <span class="signup-error signup-form-email-error"></span>
@@ -45,15 +46,14 @@
 
             <label for="password-signup">PASSWORD:</label>
             <span class="signup-error signup-form-password-error"></span>
-            <input type="password" id="password-signup" name="passwordSignup" required>
+            <input min="8" max="30" type="password" id="password-signup" name="passwordSignup" required>
 
             <label for="confirm-password-signup">CONFIRM PASSWORD:</label>
             <span class="signup-error signup-form-password-error"></span>
-            <input type="password" id="confirm-password-signup" name="confirmPasswordSignup" required>
+            <input min="8" max="30" type="password" id="confirm-password-signup" name="confirmPasswordSignup" required>
 
-            <button id='signup-submit-button' class='btn waves-effect waves-light'> Signup </button>
-            <span class="signup-error" id="general-error"></span>
-            <span id="signup-success"></span>
+            <input type="submit" id='signup-submit-button' class='btn waves-effect waves-light' value="Signup">
+            <span class="signup-error" id="general-signup-error"></span>
           </form>
         </div>
       </li>
@@ -61,7 +61,8 @@
   </main>
 
   <% include partials/footer %>
-  <script type="text/javascript" src="javascript/login-signup.js"></script>
+  <script type="text/javascript" src="javascript/login.js"></script>
+  <script type="text/javascript" src="javascript/signup.js"></script>
 </body>
 
 </html>

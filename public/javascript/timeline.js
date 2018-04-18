@@ -1,33 +1,40 @@
+const getTimeline = () => {
+  $.get('/home/:userId/timeline/default')
+    .done((result) => {
+      console.log(result)
+      // DOM element where the Timeline will be attached
+      const container = document.getElementById('visual')
+      // Create object of events needed to populate timeline
+      const filteredData = result.filter(x => x.id === 1)
+      const dataArr = []
+      const optionsArr = []
+      for (let i = 0; i < filteredData.length; i++) {
+        dataArr.push({
+          id: i,
+          content: result[i].name,
+          description: result[i].description,
+          start: result[i].start,
+          end: result[i].end
+        })
+      }
+      // Create a DataSet (allows two way data-binding)
+      const items = new vis.DataSet(dataArr)
 
-
-//REDIRECTS USER BACK TO THE HOME PAGE
-const homeFunc = () => {
-  window.location.href = 'http://localhost:3000/home'
+      // Create an options object that gives customized options to timeline
+      const options = {
+        template: (item, element, data) => {
+          return `<p class="vis-title">${item.content}</p><br><p>${item.description}</p>`
+        },
+        zoomable: result[0].zoomable,
+        timeAxis: result[0].timeAxis,
+        orientation: result[0].orientation
+      }
+      const timeline = new vis.Timeline(container, items, options)
+    })
 }
 
-
 $(document).ready(() => {
-  //CLICK EVENT HANDLER FOR HOME REDIRECT
-  $('.home').click(homeFunc)
-  // DOM element where the Timeline will be attached
-  const container = document.getElementById('visual')
 
-  // Create a DataSet (allows two way data-binding)
-  const items = new vis.DataSet([
-    { id: 1, content: 'item 1', start: '2013-04-20' },
-    { id: 2, content: 'item 2', start: '2013-04-14' },
-    { id: 3, content: 'item 3', start: '2013-04-18' },
-    { id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19' },
-    { id: 5, content: 'item 5', start: '2013-04-25' },
-    { id: 6, content: 'item 6', start: '2013-04-27' }
-  ])
+  getTimeline()
 
-  // Configuration for the Timeline
-  const options = {
-    editable: true,
-    selectable: true
-  }
-
-  // Create a Timeline
-  const timeline = new vis.Timeline(container, items, options)
 })

@@ -1,5 +1,5 @@
-$(document).ready(() => {
-  $('.parallax').parallax()
+const createDefaultTimeline = () => {
+  // Get DOM container for visualization engine
   const container = document.getElementById('visualization')
 
   // Create a DataSet (allows two way data-binding)
@@ -38,6 +38,7 @@ $(document).ready(() => {
 
   ])
 
+  // Create options for visualization engine
   const options = {
     template: (item, element, data) => {
       return `<p class="vis-title">${item.content}</p><br><p>${item.description}</p>`
@@ -49,9 +50,10 @@ $(document).ready(() => {
     verticalScroll: true,
   }
 
-  // Create a Timeline
+  // Create a Timeline with visualization engine
   const timeline = new vis.Timeline(container, items, options)
 
+  // Functions for interactive buttons on timeline
   const move = (percentage) => {
     var range = timeline.getWindow();
     var interval = range.end - range.start;
@@ -62,7 +64,6 @@ $(document).ready(() => {
     });
   }
 
-  // attach events to the navigation buttons
   document.getElementById('zoomIn').onclick = () => {
     timeline.zoomIn(0.2)
   }
@@ -75,5 +76,20 @@ $(document).ready(() => {
   document.getElementById('moveRight').onclick = () => {
     move(-0.2)
   }
+}
 
+const getCookieInfo = () => {
+  $.get('/cookie')
+    .done((result) => {
+      // console.log(result.message)
+      if (result.message === 'Success') {
+        window.location = `http://localhost:3000/home/${result.id}`
+      }
+    })
+}
+getCookieInfo()
+
+$(document).ready(() => {
+  $('.parallax').parallax()
+  createDefaultTimeline()
 })

@@ -8,21 +8,58 @@ main {
   flex: 1 0 auto;
 }
 
-.vis-item {
-  color: grey;
-  background-color: lightblue;
+#visualization {
+  position: relative;
 }
 
-.vis-today {
-  background: tomato;
-}
-
-/* gray background in weekends, white text color */
-/* .vis-time-axis .vis-grid.vis-saturday,
-.vis-time-axis .vis-grid.vis-sunday {
-  background: gray;
-}
-.vis-time-axis .vis-text.vis-saturday,
-.vis-time-axis .vis-text.vis-sunday {
+.vis-button {
+  background-color: black;
   color: white;
-} */
+  border: 0px;
+  font-family: 'Lato', sans-serif;
+  height: 30px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  z-index: 100;
+}
+
+.vis-timeline {
+  border: 2px solid #00aff0;
+  font-family: 'Arial Narrow';
+  font-size: 12px;
+  background: #00aff0;
+  opacity: .7;
+  color: white;
+}
+
+.vis-item,
+.vis-item.vis-line {
+  border: 3px solid black;;
+  background-color: black;
+  opacity: 0.9;
+  height: 60px;
+}
+
+.vis-item.vis-dot {
+  border-width: 10px;
+  border-radius: 10px;
+}
+
+.vis-title {
+  color:white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  line-height: 0px;
+}
+
+.vis-time-axis .vis-text {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+}
