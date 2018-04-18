@@ -49,7 +49,7 @@ const loginUser = (req, res, next) => {
       bcrypt.compare(req.body.loginPassword, storedHash, (err, passwordsMatch) => {
         if (passwordsMatch && req.cookies.fstoken === undefined) {
           const fstoken = jwt.sign({ username: req.body.loginUsername }, KEY)
-          res.cookie('token', token, { httpOnly: true })
+          res.cookie('token', fstoken, { httpOnly: true })
           res.status(200).json({ message: 'success' })
         } else if (passwordsMatch && req.cookies.fstoken !== undefined) {
           res.status(200).json({ message: 'success' })
