@@ -1,0 +1,71 @@
+<!-- MODALS -->
+
+<!-- EDIT MODAL -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h5>Edit this project?</h5>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect btn-flat">No</a>
+      <a href="#!" class="modal-action modal-close waves-effect btn-flat">Yes</a>
+    </div>
+  </div>
+<!-- END OF EDIT MODAL -->
+
+<!-- DELETE MODAL -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+      <h5>Delete this project?</h5>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close btn-flat">No</a>
+      <a href="#!" class="modal-action modal-close btn-flat">Yes</a>
+    </div>
+  </div>
+<!-- END OF DELETE MODAL -->
+
+<!-- NEW PROJECT MODAL -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+      <h5 class="timeline-name">TIMELINE NAME:</h5>
+      <span id="timeline-name-error"></span>
+      <span id="timeline-name-length-error"></span>
+      <div class="new-timeline-name">
+        <input id="new-timeline-name" type="text" name="timeline-name">
+        <p class="description">DESCRIPTION:</p>
+        <span id="description-error"></span>
+        <textarea id="textarea1" class="materialize-textarea"></textarea>
+        <p class="group-members">GROUP MEMBERS (EMAIL): </p>
+        <span id="group-members-email-error"></span>
+        <div class="chips">
+          <input class="group-emails custom-class">
+        </div>
+      </div>
+      <p class="timeline-duration">TIMELINE DURATION:</p>
+      <div class="checkboxes">
+          <p>
+          <label>
+            <input type="radio" class="filled-in" name="group1" checked/>
+            <span>DAY</span>
+          </label>
+          <label>
+            <input type="radio" class="filled-in" name="group1"/>
+            <span>WEEK</span>
+          </label>
+          <label>
+            <input type="radio" class="filled-in" name="group1"/>
+            <span>MONTH</span>
+          </label>
+          <label>
+            <input type="radio" class="filled-in" name="group1"/>
+            <span>YEAR</span>
+          </label>
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close btn-flat cancel-button">CANCEL</a>
+      <a href="#!" class="modal-action modal-close btn-flat create-button" disabled>CREATE</a>
+    </div>
+  </div>
+<!-- END OF NEW PROJECT MODAL -->

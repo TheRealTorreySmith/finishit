@@ -3,8 +3,10 @@ const router = express.Router()
 
 /* GET DASHBOARD PAGE */
 const dash = (req, res, next) => {
-  res.render('home', { title: ' The Home Page' })
+  res.render('home', { title: 'Dashboard' })
 }
+
+
 
 
 router.get('/', dash)

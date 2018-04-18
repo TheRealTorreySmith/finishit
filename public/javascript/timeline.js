@@ -1,4 +1,14 @@
+
+
+//REDIRECTS USER BACK TO THE HOME PAGE
+const homeFunc = () => {
+  window.location.href = 'http://localhost:3000/home'
+}
+
+
 $(document).ready(() => {
+  //CLICK EVENT HANDLER FOR HOME REDIRECT
+  $('.home').click(homeFunc)
   // DOM element where the Timeline will be attached
   const container = document.getElementById('visual')
 

@@ -3,9 +3,12 @@
   <head>
     <% include partials/head %>
     <link href="/vis/dist/vis.css" rel="stylesheet" type="text/css" />
+    <link rel='stylesheet' href='/stylesheets/navbar.css' />
     <link rel="stylesheet" href="/stylesheets/timeline.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
   </head>
   <body>
+    <% include partials/home-top-nav %>
     <main>
       <div class="container">
         <div class="row">
@@ -13,8 +16,10 @@
           <div id="visual"></div>
         </div>
       </div>
+    <% include partials/modals %>
     </main>
     <% include partials/footer %>
     <script src="/javascript/timeline.js"></script>
+    <script type="text/javascript" src="javascript/home.js"></script>
   </body>
 </html>

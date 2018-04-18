@@ -58,6 +58,11 @@ transform: translateY(1px);
   margin-top: 30px;
 }
 
+.default-timeline-image {
+  height: 348px;
+  width: 348px;
+}
+
 
 /* CAROUSEL */
 .timeline-carousel {
@@ -150,40 +155,4 @@ transform: translateY(1px);
   color: #eaeaed;
   line-height: 96px;
   transform: rotateY(180deg);
-}
-
-/* MODALS */
-
-.modal-action {
-  background: black;
-  color: white;
-  font-family: 'Lato', sans-serif;
-}
-
-.modal-action:hover {
-  background-color: #00aff0;
-}
-
-.modal-action:active {
-transform: translateY(1px);
-}
-
-.modal-content {
-  text-align: center;
-}
-
-#modal1 {
-  margin-top: 50px;
-}
-
-#modal2 {
-  margin-top: 50px;
-}
-
-#modal3 {
-  margin-top: 50px;
-}
-
-.new-project-name {
-  margin: 0px 120px;
 }
