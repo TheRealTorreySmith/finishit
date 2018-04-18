@@ -18,9 +18,10 @@
       <li>
         <div class="collapsible-header" id="login-collapsible">LOGIN</div>
         <div class="collapsible-body">
-          <form class="form" id='login-form' action="#" method="post">
+          <form class="form" id='login-form' method="post">
 
             <label for="username-login">USERNAME:</label>
+            <span class="signup-error login-form-username-error"></span>
             <input type="text" id='username-login' name="usernameLogin" required>
 
             <label for="password-login">PASSWORD:</label>
@@ -59,7 +60,8 @@
   </main>
 
   <% include partials/footer %>
-  <script type="text/javascript" src="javascript/login-signup.js"></script>
+  <script type="text/javascript" src="javascript/signup.js"></script>
+  <script type="text/javascript" src="javascript/login.js"></script>
 </body>
 
 </html>

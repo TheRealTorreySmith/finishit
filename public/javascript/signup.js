@@ -2,8 +2,8 @@ let userNameIsTaken = true
 let emailIsTaken = true
 let passwordsMatch = false
 
-const checkUsername = () => {
-  return $.get('/login/users')
+const checkUsernameSignup = () => {
+  return $.get('/start/users')
     .done((result) => {
       const enteredUsername = $('#username-signup').val().toLowerCase()
       const usernames = result.map(x => x.username)
@@ -25,7 +25,7 @@ const checkUsername = () => {
 }
 
 const checkEmail = () => {
-  return $.get('/login/users')
+  return $.get('/start/users')
     .done((result) => {
       const emailRegex = RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       const enteredEmail = $('#email-signup').val().toLowerCase()
@@ -65,7 +65,7 @@ const checkPasswords = () => {
 }
 
 // CREATE THE OBJECT THAT WILL ACT AS THE REQ.BODY
-const createRequest = () => {
+const createRequestSignup = () => {
   return {
     signupUsername: $('#username-signup').val(),
     signupEmail: $('#email-signup').val(),
@@ -87,7 +87,7 @@ $(document).ready(() => {
   // WHEN USER FOCUSES OUT OF USERNAME INPUT,
   // CHECK DATABASE TO SEE IF USERNAME IS ALREADY TAKEN
   $('#username-signup').focusout((event) => {
-    checkUsername()
+    checkUsernameSignup()
   })
 
   // WHEN USER FOCUSES OUT OF EMAIL INPUT,
@@ -111,11 +111,11 @@ $(document).ready(() => {
     if (passwordsMatch === true && emailIsTaken === false && userNameIsTaken === false) {
       $('#general-error').empty()
       $.ajax({
-        url: '/login',
+        url: '/start/signup',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(createRequest()),
+        data: JSON.stringify(createRequestSignup()),
         success: (data) => {
           if (data.message === 'success') {
             window.location = 'http://localhost:3000/home'
@@ -123,7 +123,7 @@ $(document).ready(() => {
         }
       }) // end ajax
     } else {
-      $('#general-error').text('Your input isn\'t quite correct.')
+      $('#general-signup-error').text('Your input isn\'t quite correct.')
     }
   }) // end submit handler
 }) // End document ready

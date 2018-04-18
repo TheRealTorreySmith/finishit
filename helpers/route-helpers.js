@@ -16,11 +16,15 @@ module.exports = {
     }
   },
   schemas: {
-    authSchema: Joi.object().keys({
+    signup: Joi.object().keys({
       signupUsername: Joi.string().alphanum().min(8).max(30).required(),
       signupEmail: Joi.string().email().required(),
       signupPassword: Joi.string().min(8).max(30).required(),
       signupConfirmPassword: Joi.string().min(8).max(30).required()
+    }),
+    login: Joi.object().keys({
+      loginUsername: Joi.string().alphanum().min(8).max(30).required(),
+      loginPassword: Joi.string().min(8).max(30).required()
     })
   }
 }

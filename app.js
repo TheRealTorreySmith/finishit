@@ -6,7 +6,7 @@ const logger = require('morgan');
 const expressValidator = require('express-validator')
 
 const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
+const startRouter = require('./routes/start');
 const homeRouter = require('./routes/home');
 const timelineRouter = require('./routes/timeline');
 
@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
+app.use('/start', startRouter);
 app.use('/home', homeRouter);
 app.use('/home/:userId/timeline', timelineRouter);
 
