@@ -6,34 +6,38 @@ const createDefaultTimeline = () => {
   const items = new vis.DataSet([
     {
       id: 1,
-      content: 'Do Stuff',
-      description: 'I need to do a bunch of stuff',
-      start: '2018-04-20',
-      end: '2018-04-20'
+      content: 'Get ready for work',
+      description: 'Don\'t forget to brush your teeth',
+      start: '2018-04-21 07:00:00',
+      end: '2018-04-21 08:00:00'
     },
     {
       id: 2,
-      content: 'File Taxes',
-      start: '2018-04-18',
-      end: '2018-04-18'
+      content: 'Drive to work',
+      description: 'Shut up and drive',
+      start: '2018-04-21 08:00:00',
+      end: '2018-04-21 09:00:00'
     },
     {
       id: 3,
-      content: 'Write Novel',
-      start: '2018-04-19',
-      end: '2018-04-19'
+      content: 'Code',
+      description: 'Clickity clack',
+      start: '2018-04-21 08:30:00',
+      end: '2018-04-21 10:00:00'
     },
     {
       id: 4,
-      content: 'Bathe Dog',
-      start: '2018-04-22',
-      end: '2018-04-22'
+      content: 'Other code',
+      description: 'Clackity click',
+      start: '2018-04-21 09:00:00',
+      end: '2018-04-21 12:00:00'
     },
     {
       id: 5,
-      content: 'Bathe Ostrich',
-      start: '2018-04-22 00:00:00',
-      end: '2018-04-22 12:00:00'
+      content: 'Goof off',
+      description: 'Time flies when you\'re having fun',
+      start: '2018-04-21 12:00:00',
+      end: '2018-04-21 16:30:00'
     }
 
   ])
@@ -44,13 +48,13 @@ const createDefaultTimeline = () => {
       return `<p class="vis-title">${item.content}</p><br><p>${item.description}</p>`
     },
     zoomable: false,
-    timeAxis: { scale: 'day' },
+    timeAxis: { scale: 'hour' },
     height: '400px',
     orientation: { axis: 'top' },
     verticalScroll: true,
-    min: '2018-04-23 00:00:00',
-    max: '2018-05-23 00:00:00',
-    zoomMax: 50000000000
+    min: '2018-04-21 00:00:00',
+    max: '2018-05-22 00:00:00',
+    zoomMax: 50000000
   }
 
   // Create a Timeline with visualization engine
