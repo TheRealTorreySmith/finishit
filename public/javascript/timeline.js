@@ -1,7 +1,7 @@
 const getTimeline = () => {
   $.get('/home/:userId/timeline/default')
     .done((result) => {
-      console.log(result[0].timeAxis)
+      console.log(result)
       // DOM element where the Timeline will be attached
       const container = document.getElementById('visual')
       // Create object of events needed to populate timeline

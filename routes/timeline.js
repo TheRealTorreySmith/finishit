@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const knex = require('../knex')
+const jwt = require('jsonwebtoken')
+const env = require('dotenv').config()
+
+const KEY = process.env.JWT_KEY
 
 /* GET PROJECT PAGE */
 const selectedTimeline = (req, res, next) => {
@@ -12,12 +16,15 @@ const renderPage = (req, res, next) => {
 }
 
 const getTimelineData = (req, res, next) => {
+  const payload = jwt.verify(req.cookies.token, KEY)
+  console.log(payload.username)
+
   knex.from('timelines')
     .select('*')
     .join('events', 'timelines.id', 'events.timeline_id')
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .join('users', 'users.id', 'users_timelines.users_id')
-    .where('users.id', 1)
+    .where('users.username', 'mitchl')
     .then((result) => {
       res.send(result)
     })
