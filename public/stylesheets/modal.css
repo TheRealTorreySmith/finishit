@@ -27,7 +27,8 @@ transform: translateY(1px);
 }
 
 #modal3 {
-  margin-top: 50px;
+  margin-top: 10px;
+  max-height: 100%;
 }
 
 .new-timeline-name {
@@ -126,4 +127,13 @@ input:not([type]):focus:not([readonly]) {
 .chip {
   background-color: #00aff0;
   color: white;
+}
+
+.start-date-title {
+  margin: 0px;
+}
+
+#start-date {
+  width: 30%;
+  text-align: center;
 }

@@ -6,6 +6,8 @@
     <link rel='stylesheet' href='/stylesheets/home.css' />
     <link rel='stylesheet' href='/stylesheets/modal.css' />
     <script type="text/javascript" src="javascript/home.js"></script>
+    <script type="text/javascript" src="javascript/modal.js"></script>
+    <script type="text/javascript" src="javascript/html2canvas.min.js"></script>
   </head>
   <body>
     <% include partials/home-top-nav %>
@@ -23,7 +25,7 @@
               <div class="time-container">
                 <div class="time">
                   <div class="side">
-                    <a href="#one!"><img class="selected-image" height="200px" width="200px" src="https://www.algotech.solutions/blog/wp-content/uploads/2016/02/angular-reactive-chart-hero.jpg"></a>
+                    <a href="#one!"><img id="capture" class="selected-image" height="200px" width="200px" src="https://www.algotech.solutions/blog/wp-content/uploads/2016/02/angular-reactive-chart-hero.jpg"></a>
                   </div>
                   <div class="side back">
                     <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
@@ -102,5 +104,6 @@
 
     <% include partials/modals %>
     <% include partials/footer %>
+
   </body>
 </html>

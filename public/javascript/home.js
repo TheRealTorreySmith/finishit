@@ -26,7 +26,7 @@ const checkTimelineLength = () => {
 
 //CHECKS TIMELINE NAME
 const checkTimelineName = () => {
-  return $.get('/timeline/names')
+  return $.get('/home/names')
   .done(result => {
     const timelineName = $('#new-timeline-name').val()
     const names = result.map(x => x.name)
@@ -42,12 +42,12 @@ const checkTimelineName = () => {
   .fail(err => err)
 }
 
-//CHECKS THE LENGTH OF THE DESCRIPTION
+//  CHECKS THE LENGTH OF THE DESCRIPTION
 const checkDescriptionLength = () => {
   const description = $('#textarea1').val()
   if (description.length < 8) {
     if ($('#description-error')[0].textContent === '') {
-    $('#description-error').append(` Whoops. The description must be at least 8 characters long.`)
+      $('#description-error').append(' Whoops. The description must be at least 8 characters long.')
     }
   } else {
     $('#description-error').empty()
@@ -75,38 +75,48 @@ const checkDescriptionLength = () => {
 const nextButton = () => {
   $('.carousel').carousel('next')
 }
+
+//CAPTURES A SCREENSHOT FOR ELEMENT WITH ID 'CAPTURE'
+const screenCap = () => {
+  html2canvas(document.querySelector("#capture"), {
+    letterRendering: 1, allowTaint : true
+    }).then(pic => {
+      document.body.append(pic)
+    })
+}
+
 //SCROLLS CAROUSEL TO THE PREVIOUS
 const lastButton = () => {
   $('.carousel').carousel('prev')
 }
-//SCROLLS CAROUSEL TO THE NUMBER SELECTED
+//  SCROLLS CAROUSEL TO THE NUMBER SELECTED
 const numButton = (event) => {
   const num = $(event.target)[0].innerHTML
   $('.carousel').carousel('set', num)
 }
 
-//REDIRECTS USER TO LOGIN PAGE
+//  REDIRECTS USER TO LOGIN PAGE
 const logout = () => {
   window.location.href = 'http://localhost:3000/login'
 }
 
-//AJAX POST NEW TIMELINE
+//  AJAX POST NEW TIMELINE
 const newTimeline = () => {
   const timelineName = $('#new-timeline-name').val()
   const description = $('#textarea1').val()
   $.ajax({
-          url: '/timeline',
-          type: 'POST',
-          dataType: "json",
-          contentType: "application/json; charset=utf-8",
-          data: JSON.stringify({
-            name: `${timelineName}`,
-            description: `${description}`
-            })
-        })
+    url: '/home',
+    type: 'POST',
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify({
+      name: `${timelineName}`,
+      description: `${description}`
+    })
+  })
 }
 
-//CLEARS THE FORM ON CLEAR AND SUBMISSION
+//  CLEARS THE FORM ON CLEAR AND SUBMISSION
 const clearForm = () => {
   $('#new-timeline-name').val('')
   $('#textarea1').val('')
@@ -125,6 +135,8 @@ const defaultTimeline = () => {
     $('.default-timeline-image').attr('src', `${image}`)
 }
 
+
+
 // DOCUMENT READY
 $(document).ready(() => {
   $('.dropdown-trigger').dropdown()
@@ -132,6 +144,7 @@ $(document).ready(() => {
   $('.modal').modal()
   $('.chips').chips()
   defaultTimeline()
+
 
   //HOME MENU EVENT HANDLERS
   $('.logout').click(logout)
@@ -142,9 +155,9 @@ $(document).ready(() => {
   $('#new-timeline-name').keyup(enableCreate)
   $('#textarea1').keyup(checkDescriptionLength)
   $('#textarea1').keyup(enableCreate)
-
   // $('.group-emails').keyup(enterKey)
-  $('.create-button').click(newTimeline, clearForm)
+  $('.create-button').click(newTimeline)
+  $('.create-button').click(clearForm)
   $('.cancel-button').click(clearForm)
 
   //CAROUSEL EVENT HANDLERS

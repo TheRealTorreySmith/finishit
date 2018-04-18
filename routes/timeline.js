@@ -1,4 +1,4 @@
-//IMPORTS
+//  IMPORTS
 const express = require('express')
 const router = express.Router()
 const knex = require('../knex')
@@ -20,12 +20,12 @@ const renderPage = (req, res, next) => {
 const getUserEmails = (req, res, next) => {
   knex('users')
     .select('*')
-    .then(userEmails => {
+    .then((userEmails) => {
       res.json(userEmails)
     })
 }
 
-//QUERY DATABASE FOR ALL TIMELINE NAMES
+//  QUERY DATABASE FOR ALL TIMELINE NAMES
 const getTimelineNames = (req, res, next) => {
   knex('timelines')
     .select('*')
@@ -35,21 +35,20 @@ const getTimelineNames = (req, res, next) => {
     })
 }
 
-//INSERT NEW TIMELINE INTO DATABASE
+// INSERT NEW TIMELINE INTO DATABASE
 const newTimeline = (req, res, next) => {
   knex('timelines')
     .insert({
       name: req.body.name,
       description: req.body.description
     })
-    .then(result => {
-      res.json({message: 'Successful'})
+    .then((result) => {
+      res.json({ message: 'Successful' })
     })
 }
 
 const getTimelineData = (req, res, next) => {
   const payload = jwt.verify(req.cookies.token, KEY)
-  console.log(req.params)
   knex.from('timelines')
     .select('*')
     .join('events', 'timelines.id', 'events.timeline_id')
@@ -61,9 +60,7 @@ const getTimelineData = (req, res, next) => {
     })
 }
 
-
-
-//ROUTE REQUESTS
+//  ROUTE REQUESTS
 router.get('/', renderPage)
 router.get('/emails', getUserEmails)
 router.get('/names', getTimelineNames)
@@ -71,5 +68,5 @@ router.get('/default', getTimelineData)
 router.get('/:id', selectedTimeline)
 router.post('/', newTimeline)
 
-//EXPORTS
+//  EXPORTS
 module.exports = router
