@@ -34,8 +34,8 @@ const addUser = (req, res, next) => {
       hashed_password: hashedPass
     })
     .then(() => {
-      const token = jwt.sign({ username: req.body.signupUsername }, KEY)
-      res.cookie('token', token, { httpOnly: true })
+      const fstoken = jwt.sign({ username: req.body.signupUsername }, KEY)
+      res.cookie('token', fstoken, { httpOnly: true })
       res.status(200).json({ message: 'success' })
     })
 }
@@ -47,11 +47,11 @@ const loginUser = (req, res, next) => {
     .then((result) => {
       const storedHash = result[0].hashed_password
       bcrypt.compare(req.body.loginPassword, storedHash, (err, passwordsMatch) => {
-        if (passwordsMatch && req.cookies.token === undefined) {
-          const token = jwt.sign({ username: req.body.loginUsername }, KEY)
+        if (passwordsMatch && req.cookies.fstoken === undefined) {
+          const fstoken = jwt.sign({ username: req.body.loginUsername }, KEY)
           res.cookie('token', token, { httpOnly: true })
           res.status(200).json({ message: 'success' })
-        } else if (passwordsMatch && req.cookies.token !== undefined) {
+        } else if (passwordsMatch && req.cookies.fstoken !== undefined) {
           res.status(200).json({ message: 'success' })
         } else {
           res.status(200).json({ message: 'fail' })

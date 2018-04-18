@@ -74,7 +74,6 @@ const createRequestSignup = () => {
   }
 }
 
-
 $(document).ready(() => {
   // MAKE SIGNUP/LOGIN BUTTONS FUNCTIONAL.
   $('.collapsible').collapsible()
@@ -99,7 +98,7 @@ $(document).ready(() => {
 
   // WHEN USER FOCUSES OUT OF CONFRIM PASSWORD INPUT,
   // CHECK DATABASE TO SEE IF EMAIL IS ALREADY TAKEN
-  $('#confirm-password-signup').focusout((event) => {
+  $('#confirm-password-signup').keyup((event) => {
     checkPasswords()
   })
 
@@ -109,7 +108,7 @@ $(document).ready(() => {
     event.preventDefault()
     // Make POST request with form field data as POST body
     if (passwordsMatch === true && emailIsTaken === false && userNameIsTaken === false) {
-      $('#general-error').empty()
+      $('#general-signup-error').empty()
       $.ajax({
         url: '/start/signup',
         type: 'POST',
@@ -123,6 +122,7 @@ $(document).ready(() => {
         }
       }) // end ajax
     } else {
+      $('#general-signup-error').empty()
       $('#general-signup-error').text('Your input isn\'t quite correct.')
     }
   }) // end submit handler
