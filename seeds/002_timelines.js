@@ -10,7 +10,7 @@ exports.seed = (knex, Promise) => {
           name: 'Test Timeline',
           description: 'This is a working test for a timeline to display on the /timelines page',
           zoomable: true,
-          timeAxis: JSON.stringify({ scale: 'hour' }),
+          timeAxis: JSON.stringify({ scale: 'day' }),
           orientation: JSON.stringify({ axis: 'bottom' })
         }
       ])

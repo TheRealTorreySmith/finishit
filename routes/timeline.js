@@ -13,8 +13,11 @@ const renderPage = (req, res, next) => {
 
 const getTimelineData = (req, res, next) => {
   knex.from('timelines')
-    .join('events', 'timelines.id', 'events.timeline_id')
     .select('*')
+    .join('events', 'timelines.id', 'events.timeline_id')
+    .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
+    .join('users', 'users.id', 'users_timelines.users_id')
+    .where('users.id', 1)
     .then((result) => {
       res.send(result)
     })
