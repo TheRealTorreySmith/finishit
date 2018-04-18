@@ -55,6 +55,7 @@ const getTimelineData = (req, res, next) => {
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .join('users', 'users.id', 'users_timelines.users_id')
     .where('users.username', 'mitchl')
+    .where('timelines.id', req.params.id)
     .then((result) => {
       res.send(result)
     })
@@ -65,7 +66,8 @@ router.get('/', renderPage)
 router.get('/emails', getUserEmails)
 router.get('/names', getTimelineNames)
 router.get('/default', getTimelineData)
-router.get('/:id', selectedTimeline)
+router.get('/:timelineId', renderPage)
+router.get('/:timelineId', getTimelineData)
 router.post('/', newTimeline)
 
 //  EXPORTS
