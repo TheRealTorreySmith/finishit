@@ -17,8 +17,7 @@ const renderPage = (req, res, next) => {
 
 const getTimelineData = (req, res, next) => {
   const payload = jwt.verify(req.cookies.token, KEY)
-  console.log(payload.username)
-
+  console.log(req.params)
   knex.from('timelines')
     .select('*')
     .join('events', 'timelines.id', 'events.timeline_id')
