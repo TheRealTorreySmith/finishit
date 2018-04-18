@@ -2,63 +2,61 @@
 
 <!-- EDIT MODAL -->
 <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h5>Edit this project?</h5>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect btn-flat">No</a>
-      <a href="#!" class="modal-action modal-close waves-effect btn-flat">Yes</a>
-    </div>
+  <div class="modal-content">
+    <h5>Edit this project?</h5>
   </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect btn-flat">No</a>
+    <a class="modal-action modal-close waves-effect btn-flat">Yes</a>
+  </div>
+</div>
 <!-- END OF EDIT MODAL -->
 
 <!-- DELETE MODAL -->
 <div id="modal2" class="modal">
-    <div class="modal-content">
-      <h5>Delete this project?</h5>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close btn-flat">No</a>
-      <a href="#!" class="modal-action modal-close btn-flat">Yes</a>
-    </div>
+  <div class="modal-content">
+    <h5>Delete this project?</h5>
   </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close btn-flat">No</a>
+    <a class="modal-action modal-close btn-flat">Yes</a>
+  </div>
+</div>
 <!-- END OF DELETE MODAL -->
 
 <!-- NEW PROJECT MODAL -->
 <div id="modal3" class="modal">
-    <div class="modal-content">
-      <h5 class="timeline-name">TIMELINE NAME:</h5>
-      <span id="timeline-name-error"></span>
-      <span id="timeline-name-length-error"></span>
-      <div class="new-timeline-name">
-        <input id="new-timeline-name" type="text" name="timeline-name">
-        <p class="description">DESCRIPTION:</p>
-        <span id="description-error"></span>
-        <textarea id="textarea1" class="materialize-textarea"></textarea>
-        <p class="group-members">GROUP MEMBERS: (EMAIL)</p>
-        <span id="group-members-email-error"></span>
-        <div class="chips">
-          <input class="group-emails custom-class">
-        </div>
-
+  <div class="modal-content">
+    <h5 class="timeline-name">TIMELINE NAME:</h5>
+    <span id="timeline-name-error"></span>
+    <span id="timeline-name-length-error"></span>
+    <div class="new-timeline-name">
+      <input id="new-timeline-name" type="text" name="timeline-name">
+      <p class="description">DESCRIPTION:</p>
+      <span id="description-error"></span>
+      <textarea id="textarea1" class="materialize-textarea"></textarea>
+      <p class="group-members">GROUP MEMBERS (EMAIL): </p>
+      <span id="group-members-email-error"></span>
+      <div class="chips">
+        <input class="group-emails custom-class">
       </div>
-      <p class="timeline-duration">TIMELINE DURATION:</p>
-
-      <div class="checkboxes">
-          <p>
-          <label>
+    </div>
+    <p class="timeline-duration">TIMELINE DURATION:</p>
+    <div class="checkboxes">
+      <p>
+        <label>
             <input type="radio" class="filled-in" name="group1" checked/>
             <span>DAY</span>
           </label>
-          <label>
+        <label>
             <input type="radio" class="filled-in" name="group1"/>
             <span>WEEK</span>
           </label>
-          <label>
+        <label>
             <input type="radio" class="filled-in" name="group1"/>
             <span>MONTH</span>
           </label>
-          <label>
+        <label>
             <input type="radio" class="filled-in" name="group1"/>
             <span>YEAR</span>
           </label>
@@ -72,4 +70,36 @@
       <a class="modal-action modal-close btn-flat create-button" disabled>CREATE</a>
     </div>
   </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close btn-flat cancel-button">CANCEL</a>
+    <a class="modal-action modal-close btn-flat create-button" disabled>CREATE</a>
+  </div>
+</div>
 <!-- END OF NEW PROJECT MODAL -->
+
+
+<!-- NEW EVENT(S) MODAL -->
+<div id="event-modal" class="modal">
+  <div class="modal-content">
+    <form class="form" id="signup-form" method="post">
+      <label for="new-event-name">EVENT NAME:</label>
+      <span class="event-error new-event-form-name-error"></span>
+      <input max="30" type="text" id='new-event-name' name="new-event-name" required>
+
+      <label for="new-event-description">DESCRIPTION:</label>
+      <span class="new-event-error new-event-description-error"></span>
+      <input type="text" id='new-event-description' name="new-event-description" required>
+
+      <label for="new-event-start-time">START TIME:</label>
+      <span class="new-event-error new-event-start-time-error"></span>
+      <input type="text" id="new-event-start-time" name="new-event-start-time" required>
+
+      <label for="new-event-end-time">END TIME:</label>
+      <span class="new-event-error new-event-end-time-error"></span>
+      <input type="text" id="new-event-end-time" name="new-event-end-time" required>
+
+      <input type="submit" id='new-event-submit-button' class='class="modal-action modal-close btn-flat create-button"' value="ADD EVENT">
+      <span class="new-event-error" id="general-new-event-error"></span>
+    </form>
+  </div>
+  <!-- END OF NEW EVENT(S) MODAL -->

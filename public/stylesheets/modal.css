@@ -98,6 +98,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-top: 0px;
 }
 
+
 .chip:focus {
   background-color: #00aff0;
 }

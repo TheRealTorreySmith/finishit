@@ -9,7 +9,22 @@ const KEY = process.env.JWT_KEY
 
 /* GET TIMELINE PAGE */
 const selectedTimeline = (req, res, next) => {
-  res.render('timeline', { title: ' The Selected Timeline Page' })
+  knex.from('timelines')
+    .select('*')
+    .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
+    .join('users', 'users.id', 'users_timelines.users_id')
+    .where('users_timelines.timelines_id', req.params.timelineId)
+    .then((result) => {
+      const selectedDuration = result[0].timeAxis.scale
+      const timelineName = result[0].name
+      const timelineDescription = result[0].description
+      res.render('timeline', {
+        title: ' The Selected Timeline Page',
+        selectedDuration,
+        timelineName,
+        timelineDescription
+      })
+    })
 }
 
 const renderPage = (req, res, next) => {
@@ -17,9 +32,9 @@ const renderPage = (req, res, next) => {
 }
 
 
-
 const getTimelineData = (req, res, next) => {
-  const payload = jwt.verify(req.cookies.token, KEY)
+  const payload = jwt.verify(req.cookies.fstoken, KEY)
+  console.log(payload.username)
   knex.from('timelines')
     .select('*')
     .join('events', 'timelines.id', 'events.timeline_id')
@@ -32,10 +47,21 @@ const getTimelineData = (req, res, next) => {
     })
 }
 
-//  ROUTE REQUESTS
+const createNewEvent = (req, res, next) => {
+  console.log(req.body)
+  // knex('events')
+  // .insert({
+  //
+  // })
+  res.json({ message: 'success' })
+}
+
+
+// ROUTE REQUESTS
 router.get('/', renderPage)
 router.get('/default', getTimelineData)
 router.get('/:id', selectedTimeline)
+router.post('/:timelineId/newevent', createNewEvent)
 
-//  EXPORTS
+// EXPORTS
 module.exports = router

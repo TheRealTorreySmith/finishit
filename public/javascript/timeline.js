@@ -1,5 +1,6 @@
+
 const getTimeline = () => {
-  $.get('/home/:userId/timeline/default')
+  $.get('/home/:userId/timeline/:timelineId/getTimeline')
     .done((result) => {
       console.log(result)
       // DOM element where the Timeline will be attached
@@ -33,8 +34,48 @@ const getTimeline = () => {
     })
 }
 
+// CREATE THE OBJECT THAT WILL ACT AS THE REQ.BODY
+const createNewEvent = () => {
+  return {
+    content: $('#new-event-name').val(),
+    description: $('#new-event-description').val(),
+    start: $('#new-event-start-time').val(),
+    end: $('#new-event-end-time').val()
+  }
+}
+
+const postNewEvent = () => {
+  $.ajax({
+    url: 'home/:userId/timeline/:timelineId/newevent',
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8',
+    data: JSON.stringify(createNewEvent()),
+    success: (data) => {
+      if (data.message === 'success') {
+        window.location = 'http://localhost:3000/home'
+      }
+    }
+  }) // end ajax
+  // AFTER THE INFO HAS BEEN POSTED...
+}
+
 $(document).ready(() => {
 
+  // ALLOW FOR MODAL FUNCTIONALITY
+  $('.modal').modal()
+
+  // DISPLAY TIMELINE ON THE PAGE
   getTimeline()
+
+  // CREATE A NEW EVENT HANDLER
+  $('#new-event-submit-button').click((event) => {
+    event.preventDefault()
+    const eventName = $('#new-event-name').val()
+    const eventDescription = $('#new-event-description').val()
+    const eventStartTime = $('#new-event-start-time').val()
+    const eventEndTime = $('#new-event-end-time').val()
+    postNewEvent()
+  })
 
 })
