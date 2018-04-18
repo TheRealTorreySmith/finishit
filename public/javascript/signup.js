@@ -60,6 +60,7 @@ const checkPasswords = () => {
     $('.signup-form-password-error').text('Please keep it shorter than 30 characters.')
   } else {
     $('.signup-form-password-error').empty()
+    $('#general-signup-error').empty()
     passwordsMatch = true
   }
 }
