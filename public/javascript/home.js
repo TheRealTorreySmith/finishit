@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 //  FUNCTIONS CALLED BY EVENT HANDLERS
 
 //  ENABLES THE CREATE BUTTON
+=======
+// FUNCTIONS CALLED BY EVENT HANDLERS
+
+// ENABLES THE CREATE BUTTON
+>>>>>>> Made a bunch of changes to routes for home.js and timeline.js
 const enableCreate = () => {
   const timelineName = $('#new-timeline-name').val()
   const description = $('#textarea1').val()
@@ -17,7 +23,7 @@ const checkTimelineLength = () => {
   const timelineName = $('#new-timeline-name').val()
   if (timelineName.length < 5) {
     if ($('#timeline-name-length-error')[0].textContent === '') {
-    $('#timeline-name-length-error').append(` Whoops. The timeline name must be at least 5 characters long.`)
+      $('#timeline-name-length-error').append('Whoops. The timeline name must be at least 5 characters long.')
     }
   } else {
     $('#timeline-name-length-error').empty()
@@ -130,12 +136,12 @@ const clearForm = () => {
   $('#description-error').empty()
 }
 
-//DEFAULT DASHBOARD TIMELINE
+// DEFAULT DASHBOARD TIMELINE
 const defaultTimeline = () => {
-    const topTime = document.getElementsByClassName('active')
-    const selectedImage = $(topTime).find('img.selected-image')
-    const image = selectedImage[0].src
-    $('.default-timeline-image').attr('src', `${image}`)
+  const topTime = document.getElementsByClassName('active')
+  const selectedImage = $(topTime).find('img.selected-image')
+  const image = selectedImage[0].src
+  $('.default-timeline-image').attr('src', `${image}`)
 }
 
 
@@ -152,7 +158,7 @@ $(document).ready(() => {
   //HOME MENU EVENT HANDLERS
   $('.logout').click(logout)
 
-  //NEW TIMELINE EVENT HANDLERS
+  // NEW TIMELINE EVENT HANDLERS
   $('#new-timeline-name').keyup(checkTimelineLength)
   $('#new-timeline-name').keyup(checkTimelineName)
   $('#new-timeline-name').keyup(enableCreate)
@@ -163,7 +169,7 @@ $(document).ready(() => {
   $('.create-button').click(clearForm)
   $('.cancel-button').click(clearForm)
 
-  //CAROUSEL EVENT HANDLERS
+  // CAROUSEL EVENT HANDLERS
   $('.next').click(nextButton)
   $('.prev').click(lastButton)
   $('.btn-small').click(numButton)
