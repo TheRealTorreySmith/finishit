@@ -1,18 +1,18 @@
-//FUNCTIONS CALLED BY EVENT HANDLERS
+//  FUNCTIONS CALLED BY EVENT HANDLERS
 
-//ENABLES THE CREATE BUTTON
+//  ENABLES THE CREATE BUTTON
 const enableCreate = () => {
   const timelineName = $('#new-timeline-name').val()
   const description = $('#textarea1').val()
-  let button = $('.create-button')
+  const button = $('.create-button')
   if (timelineName.length < 5 || description.length < 8) {
-    button.attr('disabled',true)
+    button.attr('disabled', true)
   } else {
     button.removeAttr('disabled')
   }
 }
 
-//CHECKS THE LENGTH OF THE TIMELINE NAME
+//  CHECKS THE LENGTH OF THE TIMELINE NAME
 const checkTimelineLength = () => {
   const timelineName = $('#new-timeline-name').val()
   if (timelineName.length < 5) {
@@ -24,22 +24,22 @@ const checkTimelineLength = () => {
   }
 }
 
-//CHECKS TIMELINE NAME
+//  CHECKS TIMELINE NAME
 const checkTimelineName = () => {
   return $.get('/home/names')
-  .done(result => {
-    const timelineName = $('#new-timeline-name').val()
-    const names = result.map(x => x.name)
-    timelineNameIsTaken = names.includes(timelineName) ? true : false
-    if(timelineNameIsTaken) {
-      if ($('#timeline-name-error')[0].textContent === '') {
-      $('#timeline-name-error').append(` Whoops. ${timelineName} already exists.`)
+    .done((result) => {
+      const timelineName = $('#new-timeline-name').val()
+      const names = result.map(x => x.name)
+      timelineNameIsTaken = names.includes(timelineName) ? true : false
+      if(timelineNameIsTaken) {
+        if ($('#timeline-name-error')[0].textContent === '') {
+          $('#timeline-name-error').append(` Whoops. ${timelineName} already exists.`)
+        }
+      } else {
+        $('#timeline-name-error').empty()
       }
-    } else {
-      $('#timeline-name-error').empty()
-    }
-  })
-  .fail(err => err)
+    })
+    .fail(err => err)
 }
 
 //  CHECKS THE LENGTH OF THE DESCRIPTION
@@ -54,7 +54,7 @@ const checkDescriptionLength = () => {
   }
 }
 
-//CHECKS EMAIL OF GROUP MEMBERS
+//  CHECKS EMAIL OF GROUP MEMBERS
 // const enterKey = () => {
 //     return $.get('/timeline/emails')
 //     .done(result => {
@@ -71,12 +71,12 @@ const checkDescriptionLength = () => {
 //   })
 // }
 
-//SCROLLS CAROUSEL TO THE NEXT
+//  SCROLLS CAROUSEL TO THE NEXT
 const nextButton = () => {
   $('.carousel').carousel('next')
 }
 
-//CAPTURES A SCREENSHOT FOR ELEMENT WITH ID 'CAPTURE'
+//  CAPTURES A SCREENSHOT FOR ELEMENT WITH ID 'CAPTURE'
 const screenCap = () => {
   html2canvas(document.querySelector("#capture"), {
     letterRendering: 1, allowTaint : true
@@ -85,7 +85,7 @@ const screenCap = () => {
     })
 }
 
-//SCROLLS CAROUSEL TO THE PREVIOUS
+//  SCROLLS CAROUSEL TO THE PREVIOUS
 const lastButton = () => {
   $('.carousel').carousel('prev')
 }
@@ -112,7 +112,10 @@ const newTimeline = () => {
     data: JSON.stringify({
       name: `${timelineName}`,
       description: `${description}`
-    })
+    }),
+    success: (data) => {
+      console.log(data.message)
+    }
   })
 }
 

@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/start', startRouter);
 app.use('/home', homeRouter);
-app.use('/home/:userId/timeline', timelineRouter);
+app.use('/home/timeline', timelineRouter);
 
 app.use(express.static(path.join(__dirname, 'public')))
 // catch 404 and forward to error handler

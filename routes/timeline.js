@@ -16,36 +16,7 @@ const renderPage = (req, res, next) => {
   res.render('timeline', { title: ' The Default Timeline Page' })
 }
 
-// QUERY DATABASE FOR ALL USER EMAILS
-const getUserEmails = (req, res, next) => {
-  knex('users')
-    .select('*')
-    .then((userEmails) => {
-      res.json(userEmails)
-    })
-}
 
-//  QUERY DATABASE FOR ALL TIMELINE NAMES
-const getTimelineNames = (req, res, next) => {
-  knex('timelines')
-    .select('*')
-    .returning('name')
-    .then((allNames) => {
-      res.json(allNames)
-    })
-}
-
-// INSERT NEW TIMELINE INTO DATABASE
-const newTimeline = (req, res, next) => {
-  knex('timelines')
-    .insert({
-      name: req.body.name,
-      description: req.body.description
-    })
-    .then((result) => {
-      res.json({ message: 'Successful' })
-    })
-}
 
 const getTimelineData = (req, res, next) => {
   const payload = jwt.verify(req.cookies.token, KEY)
@@ -63,12 +34,8 @@ const getTimelineData = (req, res, next) => {
 
 //  ROUTE REQUESTS
 router.get('/', renderPage)
-router.get('/emails', getUserEmails)
-router.get('/names', getTimelineNames)
 router.get('/default', getTimelineData)
-router.get('/:timelineId', renderPage)
-router.get('/:timelineId', getTimelineData)
-router.post('/', newTimeline)
+router.get('/:id', selectedTimeline)
 
 //  EXPORTS
 module.exports = router
