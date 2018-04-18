@@ -14,7 +14,7 @@ const checkUsernameLogin = () => {
         $('.login-form-username-error').text(' All usernames are longer than 8 characters.')
       } else if (!userExists) {
         $('.login-form-username-error').empty()
-        $('.login-form-username-error').text(` Whoops. ${enteredUsername} doesn't exists.`)
+        $('.login-form-username-error').text(` Whoops. ${enteredUsername} doesn't exist.`)
       } else {
         $('.login-form-username-error').empty()
       }
@@ -32,14 +32,6 @@ const createRequestLogin = () => {
 
 
 $(document).ready(() => {
-  // MAKE SIGNUP/LOGIN BUTTONS FUNCTIONAL.
-  $('.collapsible').collapsible()
-  if (window.location.hash === '#login-collapsible') {
-    $('#login-collapsible').trigger('click')
-  } else if (window.location.hash === '#signup-collapsible') {
-    $('#signup-collapsible').trigger('click')
-  }
-
   // WHEN USER FOCUSES OUT OF USERNAME INPUT,
   // CHECK DATABASE TO SEE IF USERNAME EXISTS
   $('#username-login').focusout((event) => {
@@ -59,13 +51,12 @@ $(document).ready(() => {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(createRequestLogin()),
         success: (data) => {
-          console.log(data.message)
           if (data.message === 'success') {
             window.location = 'http://localhost:3000/home'
-          } else {
+          } else if (data.message === 'fail'){
             window.location = 'http://localhost:3000/start#login-collapsible'
             $('#general-login-error').empty()
-            $('#general-login-error').text('Your input isn\'t quite correct.')
+            $('#general-login-error').text('Username and password don\'t match.')
           }
         }
       })

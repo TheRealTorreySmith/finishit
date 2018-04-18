@@ -28,6 +28,7 @@
             <input type="password" id="password-login" name="passwordLogin" required>
 
             <input type="submit" id='login-submit-button' class='btn waves-effect waves-light' value='Login'>
+            <span class="signup-error" id="general-login-error"></span>
           </form>
         </div>
       </li>
@@ -52,7 +53,7 @@
             <input min="8" max="30" type="password" id="confirm-password-signup" name="confirmPasswordSignup" required>
 
             <button id='signup-submit-button' class='btn waves-effect waves-light'> Signup </button>
-            <span class="signup-error" id="general-error"></span>
+            <span class="signup-error" id="general-signup-error"></span>
           </form>
         </div>
       </li>
@@ -60,8 +61,8 @@
   </main>
 
   <% include partials/footer %>
-  <script type="text/javascript" src="javascript/signup.js"></script>
   <script type="text/javascript" src="javascript/login.js"></script>
+  <script type="text/javascript" src="javascript/signup.js"></script>
 </body>
 
 </html>
