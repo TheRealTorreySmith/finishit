@@ -23,6 +23,20 @@ const getAllUsers = (req, res, next) => {
     })
 }
 
+const getCookie = (req, res, next) => {
+  if (req.cookies.fstoken) {
+    const payload = jwt.verify(req.cookies.fstoken, KEY)
+    knex('users')
+      .select('id')
+      .where('username', payload.username)
+      .then((result) => {
+        res.json({ message: 'Success', payload, id: result[0].id })
+      })
+  } else {
+    res.json({ message: 'Failed' })
+  }
+}
+
 const addUser = (req, res, next) => {
   const saltRounds = 10
   const plaintextPassword = req.body.signupPassword
@@ -61,6 +75,7 @@ const loginUser = (req, res, next) => {
 }
 
 router.get('/', start)
+router.get('/cookie', getCookie)
 router.get('/users', getAllUsers)
 router.post('/signup', validateBody(schemas.signup), addUser)
 router.post('/login', validateBody(schemas.login), loginUser)

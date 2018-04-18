@@ -53,7 +53,7 @@ const createDefaultTimeline = () => {
     orientation: { axis: 'top' },
     verticalScroll: true,
     min: '2018-04-21 00:00:00',
-    max: '2018-05-22 00:00:00',
+    max: '2018-04-22 00:00:00',
     zoomMax: 50000000
   }
 

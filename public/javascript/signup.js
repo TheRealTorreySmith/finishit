@@ -75,6 +75,17 @@ const createRequestSignup = () => {
   }
 }
 
+// CHECK FOR COOKIE TO APPROVE LOGIN
+const getCookieInfo = () => {
+  $.get('/cookie')
+    .done((result) => {
+      // console.log(result.message)
+      if (result.message === 'Success') {
+        window.location = `http://localhost:3000/home/${result.id}`
+      }
+    })
+}
+
 $(document).ready(() => {
   // MAKE SIGNUP/LOGIN BUTTONS FUNCTIONAL.
   $('.collapsible').collapsible()
@@ -83,6 +94,10 @@ $(document).ready(() => {
   } else if (window.location.hash === '#signup-collapsible') {
     $('#signup-collapsible').trigger('click')
   }
+
+  // WHEN USER HITS LOGIN PAGE, FIRST CHECK IF COOKIE EXISTS,
+  // AND REDIRECT IF SO
+  getCookieInfo()
 
   // WHEN USER FOCUSES OUT OF USERNAME INPUT,
   // CHECK DATABASE TO SEE IF USERNAME IS ALREADY TAKEN

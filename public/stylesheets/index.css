@@ -1,4 +1,4 @@
-.parallax-container .parallax img {
+/* .parallax-container .parallax img { */
   opacity: 100 !important;
 }
 
@@ -72,13 +72,16 @@
 .menu {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 150px;
   margin: 10px;
   z-index: 100;
 }
 
+
 .vis-timeline {
-  border: 2px solid #00aff0;
+  border: 3px solid #0380f5;
+  border-radius: 900px;
+  /* box-shadow: 5px 10px; */
   font-family: 'Arial Narrow';
   font-size: 12px;
   background: #00aff0;
