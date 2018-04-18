@@ -8,32 +8,32 @@ const createDefaultTimeline = () => {
       id: 1,
       content: 'Do Stuff',
       description: 'I need to do a bunch of stuff',
-      start: '2018-04-16',
+      start: '2018-04-20',
       end: '2018-04-20'
     },
     {
       id: 2,
       content: 'File Taxes',
-      start: '2018-04-16',
+      start: '2018-04-18',
       end: '2018-04-18'
     },
     {
       id: 3,
       content: 'Write Novel',
-      start: '2018-04-18',
+      start: '2018-04-19',
       end: '2018-04-19'
     },
     {
       id: 4,
       content: 'Bathe Dog',
-      start: '2018-04-14',
+      start: '2018-04-22',
       end: '2018-04-22'
     },
     {
       id: 5,
       content: 'Bathe Ostrich',
-      start: '2018-04-20',
-      end: '2018-04-22'
+      start: '2018-04-22 00:00:00',
+      end: '2018-04-22 12:00:00'
     }
 
   ])
@@ -48,6 +48,9 @@ const createDefaultTimeline = () => {
     height: '400px',
     orientation: { axis: 'top' },
     verticalScroll: true,
+    min: '2018-04-23 00:00:00',
+    max: '2018-05-23 00:00:00',
+    zoomMax: 50000000000
   }
 
   // Create a Timeline with visualization engine
@@ -71,10 +74,10 @@ const createDefaultTimeline = () => {
     timeline.zoomOut(0.2)
   }
   document.getElementById('moveLeft').onclick = () => {
-    move(0.2)
+    move(.5)
   }
   document.getElementById('moveRight').onclick = () => {
-    move(-0.2)
+    move(-.5)
   }
 }
 

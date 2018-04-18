@@ -20,12 +20,12 @@ const renderPage = (req, res, next) => {
 const getUserEmails = (req, res, next) => {
   knex('users')
     .select('*')
-    .then(userEmails => {
+    .then((userEmails) => {
       res.json(userEmails)
     })
 }
 
-//QUERY DATABASE FOR ALL TIMELINE NAMES
+// QUERY DATABASE FOR ALL TIMELINE NAMES
 const getTimelineNames = (req, res, next) => {
   knex('timelines')
     .select('*')
@@ -35,20 +35,20 @@ const getTimelineNames = (req, res, next) => {
     })
 }
 
-//INSERT NEW TIMELINE INTO DATABASE
+// INSERT NEW TIMELINE INTO DATABASE
 const newTimeline = (req, res, next) => {
   knex('timelines')
     .insert({
       name: req.body.name,
       description: req.body.description
     })
-    .then(result => {
-      res.json({message: 'Successful'})
+    .then((result) => {
+      res.json({ message: 'Successful' })
     })
 }
 
 const getTimelineData = (req, res, next) => {
-  const payload = jwt.verify(req.cookies.token, KEY)
+  const payload = jwt.verify(req.cookies.fstoken, KEY)
   console.log(req.params)
   knex.from('timelines')
     .select('*')
@@ -56,20 +56,21 @@ const getTimelineData = (req, res, next) => {
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .join('users', 'users.id', 'users_timelines.users_id')
     .where('users.username', 'mitchl')
+    .where('timelines.id', req.params.id)
     .then((result) => {
       res.send(result)
     })
 }
 
 
-
-//ROUTE REQUESTS
+// ROUTE REQUESTS
 router.get('/', renderPage)
 router.get('/emails', getUserEmails)
 router.get('/names', getTimelineNames)
 router.get('/default', getTimelineData)
-router.get('/:id', selectedTimeline)
+router.get('/:timelineId', renderPage)
+router.get('/:timelineId', getTimelineData)
 router.post('/', newTimeline)
 
-//EXPORTS
+// EXPORTS
 module.exports = router
