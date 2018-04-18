@@ -7,8 +7,8 @@ const env = require('dotenv').config()
 const KEY = process.env.JWT_KEY
 
 const getCookie = (req, res, next) => {
-  if (req.cookies.token) {
-    const payload = jwt.verify(req.cookies.token, KEY)
+  if (req.cookies.fstoken) {
+    const payload = jwt.verify(req.cookies.fstoken, KEY)
     knex('users')
       .select('id')
       .where('username', payload.username)

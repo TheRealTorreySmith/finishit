@@ -87,9 +87,9 @@ const getCookieInfo = () => {
       }
     })
 }
+getCookieInfo()
 
 $(document).ready(() => {
   $('.parallax').parallax()
   createDefaultTimeline()
-  getCookieInfo()
 })
