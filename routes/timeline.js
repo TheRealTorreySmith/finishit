@@ -8,26 +8,28 @@ const env = require('dotenv').config()
 
 const KEY = process.env.JWT_KEY
 
+let currentSelectedTimelineId
+
 /* GET TIMELINE PAGE */
-// const selectedTimelinePage = (req, res, next) => {
-//   knex.from('timelines')
-//     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
-//     .join('users', 'users_timelines.users_id', 'users.id')
-//     .where('users_timelines.timelines_id', req.params.id)
-//     .returning(['name', 'timeAxis', 'description'])
-//     .then((result) => {
-//       console.log(result)
-//       const selectedDuration = result[0].timeAxis.scale
-//       const timelineName = result[0].name
-//       const timelineDescription = result[0].description
-//       res.render('timeline', {
-//         title: ' The Selected Timeline Page',
-//         selectedDuration,
-//         timelineName,
-//         timelineDescription
-//       })
-//     })
-// }
+const selectedTimelinePage = (req, res, next) => {
+   currentSelectedTimelineId = req.params.id
+  knex.from('timelines')
+    .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
+    .join('users', 'users_timelines.users_id', 'users.id')
+    .where('users_timelines.timelines_id', req.params.id)
+    .returning(['name', 'timeAxis', 'description'])
+    .then((result) => {
+      const selectedDuration = result[0].timeAxis.scale
+      const timelineName = result[0].name
+      const timelineDescription = result[0].description
+      res.render('timeline', {
+        title: ' The Selected Timeline Page',
+        selectedDuration,
+        timelineName,
+        timelineDescription
+      })
+    })
+}
 
 const getTimelineData = (req, res, next) => {
   const payload = jwt.verify(req.cookies.fstoken, KEY)
@@ -37,27 +39,37 @@ const getTimelineData = (req, res, next) => {
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .join('users', 'users.id', 'users_timelines.users_id')
     .where('users.username', payload.username)
-    .where('timelines.id', req.params.id)
+    .where('timelines.id', currentSelectedTimelineId)
     .then((result) => {
       res.send(result)
     })
 }
 
 const createNewEvent = (req, res, next) => {
+  console.log(currentSelectedTimelineId)
   const { content, description, start, end } = req.body
   knex('events')
-    .where('timeline_id', req.params.id)
+    .where('timeline_id', currentSelectedTimelineId)
     .insert({ content, description, start, end })
     .then(() => {
-      res.json({ message: 'success' })
+      res.json({
+        message: 'success',
+        timelineId: currentSelectedTimelineId
+      })
     })
 }
 
 
 // ROUTE REQUESTS
+<<<<<<< HEAD
 router.get('/:id/getTimeline', getTimelineData)
 // router.get('/:id', selectedTimelinePage)
 router.post('/:id/newevent', createNewEvent)
+=======
+router.get('/getTimeline', getTimelineData)
+router.get('/:id', selectedTimelinePage)
+router.post('/newevent', createNewEvent)
+>>>>>>> New event post is working. Still need to validate input
 
 // EXPORTS
 module.exports = router

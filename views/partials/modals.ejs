@@ -85,19 +85,29 @@
       <span class="new-event-error new-event-description-error"></span>
       <input type="text" id='new-event-description' name="new-event-description" required>
 
+      <label for="new-event-start-date">START DATE:</label>
+      <span class="new-event-error new-event-start-date-error"></span>
+      <input type="date" id="new-event-start-date" name="new-event-start-date">
+
       <label for="new-event-start-time">START TIME:</label>
       <span class="new-event-error new-event-start-time-error"></span>
-      <input type="date" id="new-event-start-time-date" name="new-event-start-time">
-      <input type="time" id="new-event-start-time-hour" name="new-event-start-time">
+      <input type="time" id="new-event-start-time" name="new-event-start-time">
+
+      <br>
+
+      <label for="new-event-end-date">END DATE:</label>
+      <span class="new-event-error new-event-end-date-error"></span>
+      <input type="date" id="new-event-end-date" name="new-event-end-date">
 
       <label for="new-event-end-time">END TIME:</label>
       <span class="new-event-error new-event-end-time-error"></span>
-      <input type="date" id="new-event-end-date" name="new-event-end-date" required>
-      <input type="time" id="new-event-end--hour" name="new-event-end-time" required>
+      <input type="time" id="new-event-end-time" name="new-event-end-time" required>
 
-      <input type="submit" id='new-event-submit-button' class='class="modal-action modal-close btn-flat create-button"' value="ADD EVENT">
+      <br>
+
+      <input type="submit" id='new-event-submit-button' class="modal-action modal-close btn create-button" value="ADD EVENT">
       <span class="new-event-error" id="general-new-event-error"></span>
     </form>
   </div>
-</div
+</div>
   <!-- END OF NEW EVENT(S) MODAL -->
