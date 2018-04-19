@@ -12,11 +12,11 @@ const dash = (req, res, next) => {
   if (req.cookies.fstoken) {
     const payload = jwt.verify(req.cookies.fstoken, KEY)
     knex('users')
-     .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
-       .join('users_timelines', 'users_timelines.users_id', 'users.id')
-       .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
-       .join('events', 'events.timeline_id', 'timelines.id')
-       .where('users.username', payload.username)
+      .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
+      .join('users_timelines', 'users_timelines.users_id', 'users.id')
+      .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
+      .join('events', 'events.timeline_id', 'timelines.id')
+      .where('users.username', payload.username)
       .then((result) => {
         console.log(result)
         if (result.length < 1) {
