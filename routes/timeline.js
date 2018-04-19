@@ -61,15 +61,10 @@ const createNewEvent = (req, res, next) => {
 
 
 // ROUTE REQUESTS
-<<<<<<< HEAD
-router.get('/:id/getTimeline', getTimelineData)
-// router.get('/:id', selectedTimelinePage)
-router.post('/:id/newevent', createNewEvent)
-=======
 router.get('/getTimeline', getTimelineData)
 router.get('/:id', selectedTimelinePage)
 router.post('/newevent', createNewEvent)
->>>>>>> New event post is working. Still need to validate input
+
 
 // EXPORTS
 module.exports = router

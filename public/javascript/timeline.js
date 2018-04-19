@@ -38,8 +38,8 @@ const createNewEvent = () => {
   return {
     content: $('#new-event-name').val(),
     description: $('#new-event-description').val(),
-    start: `${$('#new-event-start-date').val()} ${$('#new-event-start-time').val()}`,
-    end: `${$('#new-event-end-date').val()} ${$('#new-event-end-time').val()}`
+    start: `${$('#new-event-start-date').val()} ${$('#new-event-start-time').val()}:00`,
+    end: `${$('#new-event-end-date').val()} ${$('#new-event-end-time').val()}:00`
   }
 }
 
