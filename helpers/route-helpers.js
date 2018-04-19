@@ -25,6 +25,12 @@ module.exports = {
     login: Joi.object().keys({
       loginUsername: Joi.string().alphanum().min(8).max(30).required(),
       loginPassword: Joi.string().min(8).max(30).required()
+    }),
+    newEvent: Joi.object().keys({
+      content: Joi.string().alphanum().min(4).max(30).required(),
+      description: Joi.string().max(60).required(),
+      start: Joi.date().iso(),
+      end: Joi.date().iso().required()
     })
   }
 }

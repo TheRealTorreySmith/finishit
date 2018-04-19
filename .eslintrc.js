@@ -22,6 +22,7 @@ module.exports = {
     "no-lonely-if": "off",
     "consistent-return": "off",
     "newline-per-chained-call": "off",
-    "no-unneeded-ternary": "off"
+    "no-unneeded-ternary": "off",
+    "object-curly-newline": "off"
   }
 };

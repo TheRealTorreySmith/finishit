@@ -2,7 +2,8 @@ const enableCreate = () => {
   const timelineName = $('#new-timeline-name').val()
   const description = $('#textarea1').val()
   const button = $('.create-button')
-  if (timelineName.length < 5 || description.length < 8) {
+  const startDate = $('#start-date').val()
+  if (timelineName.length < 5 || description.length < 8 || startDate === '') {
     button.attr('disabled', true)
   } else {
     button.removeAttr('disabled')
@@ -28,7 +29,7 @@ const checkTimelineName = () => {
       const timelineName = $('#new-timeline-name').val()
       const names = result.map(x => x.name)
       timelineNameIsTaken = names.includes(timelineName) ? true : false
-      if(timelineNameIsTaken) {
+      if (timelineNameIsTaken) {
         if ($('#timeline-name-error')[0].textContent === '') {
           $('#timeline-name-error').append(` Whoops. ${timelineName} already exists.`)
         }
@@ -101,20 +102,27 @@ const logout = () => {
 const newTimeline = () => {
   const timelineName = $('#new-timeline-name').val()
   const description = $('#textarea1').val()
+  const startDate = $('#start-date').val()
+  let arr = $( "input[name='group1']" ).toArray()
+  const checkedValue = arr.filter(x => x.checked)[0].defaultValue.toLowerCase()
   $.ajax({
     url: '/home',
     type: 'POST',
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8',
     data: JSON.stringify({
       name: `${timelineName}`,
-      description: `${description}`
+      description: `${description}`,
+      timeAxis: `${checkedValue}`,
+      startDate: `${startDate}`
     }),
     success: (data) => {
-      console.log(data.message)
+      // console.log(data.message)
     }
   })
+
 }
+
 
 //  CLEARS THE FORM ON CLEAR AND SUBMISSION
 const clearForm = () => {
@@ -179,7 +187,6 @@ const createTimeline = () => {
     })
 }
 
-
 // DOCUMENT READY
 $(document).ready(() => {
   $('.dropdown-trigger').dropdown()
@@ -195,9 +202,8 @@ $(document).ready(() => {
   // NEW TIMELINE EVENT HANDLERS
   $('#new-timeline-name').keyup(checkTimelineLength)
   $('#new-timeline-name').keyup(checkTimelineName)
-  $('#new-timeline-name').keyup(enableCreate)
   $('#textarea1').keyup(checkDescriptionLength)
-  $('#textarea1').keyup(enableCreate)
+  $('#start-date').change(enableCreate)
   // $('.group-emails').keyup(enterKey)
   $('.create-button').click(newTimeline)
   $('.create-button').click(clearForm)

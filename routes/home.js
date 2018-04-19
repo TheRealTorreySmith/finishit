@@ -1,4 +1,5 @@
 const express = require('express')
+
 const router = express.Router()
 const knex = require('../knex')
 const jwt = require('jsonwebtoken')
@@ -53,7 +54,8 @@ const newTimeline = (req, res, next) => {
   knex('timelines')
     .insert({
       name: req.body.name,
-      description: req.body.description
+      description: req.body.description,
+      timeAxis: JSON.stringify({ scale: req.body.timeAxis })
     })
     .then((result) => {
       res.json({ message: 'Successful' })

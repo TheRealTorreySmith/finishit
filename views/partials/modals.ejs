@@ -40,39 +40,34 @@
       <div class="chips">
         <input class="group-emails custom-class">
       </div>
-    </div>
-    <p class="timeline-duration">TIMELINE DURATION:</p>
-    <div class="checkboxes">
-      <p>
-        <label>
-            <input type="radio" class="filled-in" name="group1" checked/>
+      <p class="timeline-duration">TIMELINE DURATION:</p>
+      <div class="checkboxes">
+          <p>
+          <label>
+            <input type="radio" class="filled-in" name="group1" value="DAY" checked/>
             <span>DAY</span>
           </label>
-        <label>
-            <input type="radio" class="filled-in" name="group1"/>
+          <label>
+            <input type="radio" class="filled-in" name="group1" value="WEEK"/>
             <span>WEEK</span>
           </label>
-        <label>
-            <input type="radio" class="filled-in" name="group1"/>
+          <label>
+            <input type="radio" class="filled-in" name="group1" value="MONTH"/>
             <span>MONTH</span>
           </label>
-        <label>
-            <input type="radio" class="filled-in" name="group1"/>
+          <label>
+            <input type="radio" class="filled-in" name="group1" value="YEAR"/>
             <span>YEAR</span>
           </label>
         </p>
       </div>
       <p class="start-date-title">START DATE:</p>
-      <input id="start-date">
+      <input id="start-date" type="date">
     </div>
     <div class="modal-footer">
       <a class="modal-action modal-close btn-flat cancel-button">CANCEL</a>
       <a class="modal-action modal-close btn-flat create-button" disabled>CREATE</a>
     </div>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-action modal-close btn-flat cancel-button">CANCEL</a>
-    <a class="modal-action modal-close btn-flat create-button" disabled>CREATE</a>
   </div>
 </div>
 <!-- END OF NEW PROJECT MODAL -->
@@ -92,14 +87,17 @@
 
       <label for="new-event-start-time">START TIME:</label>
       <span class="new-event-error new-event-start-time-error"></span>
-      <input type="text" id="new-event-start-time" name="new-event-start-time" required>
+      <input type="date" id="new-event-start-time-date" name="new-event-start-time">
+      <input type="time" id="new-event-start-time-hour" name="new-event-start-time">
 
       <label for="new-event-end-time">END TIME:</label>
       <span class="new-event-error new-event-end-time-error"></span>
-      <input type="text" id="new-event-end-time" name="new-event-end-time" required>
+      <input type="date" id="new-event-end-date" name="new-event-end-date" required>
+      <input type="time" id="new-event-end--hour" name="new-event-end-time" required>
 
       <input type="submit" id='new-event-submit-button' class='class="modal-action modal-close btn-flat create-button"' value="ADD EVENT">
       <span class="new-event-error" id="general-new-event-error"></span>
     </form>
   </div>
+</div
   <!-- END OF NEW EVENT(S) MODAL -->
