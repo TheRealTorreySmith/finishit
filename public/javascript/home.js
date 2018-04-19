@@ -192,8 +192,17 @@ const createTimeline = () => {
 const deleteTimeline = () => {
   const carouselTimeline = document.getElementsByClassName('active')
   $(carouselTimeline).empty()
-}
+  const smallbtns = document.getElementsByClassName('btn-small')
 
+  // $(biggestBtn).empty()
+
+for (var i = 0; i < smallbtns.length; i++) {
+  //console.log(smallbtns[i].textContent)
+  if (smallbtns[i].textContent == smallbtns.length) {
+    smallbtns[i].remove()
+  }
+}
+ }
 
 // DOCUMENT READY
 $(document).ready(() => {

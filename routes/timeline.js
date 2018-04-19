@@ -60,7 +60,6 @@ const createNewEvent = (req, res, next) => {
     })
 }
 
-
 // ROUTE REQUESTS
 router.get('/getTimeline', getTimelineData)
 router.get('/:id', selectedTimelinePage)
