@@ -76,20 +76,12 @@ const nextButton = () => {
 
 //  CAPTURES A SCREENSHOT FOR ELEMENT WITH ID 'CAPTURE'
 const screenCap = () => {
-  html2canvas(document.querySelector('.default-timeline'), {
+  html2canvas(document.querySelector('.vis-timeline'), {
     letterRendering: 1, windowHeight: 200, windowWidth: 200
   }).then((pic) => {
     $('#capture').append(pic)
   })
 }
-
-// const screenCap = () => {
-//   html2canvas(document.querySelector('.default-timeline'), {
-//     letterRendering: 1, allowTaint: true
-//   }).then((pic) => {
-//     $('#capture').append(pic)
-//   })
-// }
 
 //  SCROLLS CAROUSEL TO THE PREVIOUS
 const lastButton = () => {
@@ -196,14 +188,19 @@ const createTimeline = () => {
     })
 }
 
+//  DELETES ITEM IN CAROUSEL ON DELETE YES CLICK
+const deleteTimeline = () => {
+  const carouselTimeline = document.getElementsByClassName('active')
+  $(carouselTimeline).empty()
+}
+
+
 // DOCUMENT READY
 $(document).ready(() => {
   $('.dropdown-trigger').dropdown()
   $('.carousel').carousel()
   $('.modal').modal()
   $('.chips').chips()
-
-
 
   // HOME MENU EVENT HANDLERS
   $('.logout').click(logout)
@@ -222,8 +219,11 @@ $(document).ready(() => {
   $('.next').click(nextButton)
   $('.prev').click(lastButton)
   $('.btn-small').click(numButton)
+  $('#yes-delete').click(deleteTimeline)
 
   // COOKIE EVENT HANDLER
   createTimeline()
-  setTimeout(function(){screenCap()}, 1500)
+  setTimeout(() => {
+    screenCap()
+  }, 1500)
 })

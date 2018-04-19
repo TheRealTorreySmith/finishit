@@ -66,6 +66,5 @@ router.get('/getTimeline', getTimelineData)
 router.get('/:id', selectedTimelinePage)
 router.post('/newevent', createNewEvent)
 
-
 // EXPORTS
 module.exports = router
