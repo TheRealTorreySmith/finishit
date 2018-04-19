@@ -103,7 +103,7 @@ const checkTimelineId = () => {
   return $.get('/home/timeline/id')
     .done((result) => {
       const num = result.length - 1
-      // window.location.href = `http://localhost:3000/home/timeline/${result[num].id}`
+      window.location.href = `http://localhost:3000/home/timeline/${result[num].id}`
     })
     .fail(err => err)
 }
@@ -112,8 +112,8 @@ const checkTimelineId = () => {
 const newTimeline = () => {
   const timelineName = $('#new-timeline-name').val()
   const description = $('#textarea1').val()
-  const startDate = $('#start-date').val()
-  let arr = $( "input[name='group1']" ).toArray()
+  const min = $('#start-date').val()
+  let arr = $("input[name='group1']" ).toArray()
   const checkedValue = arr.filter(x => x.checked)[0].defaultValue.toLowerCase()
   $.ajax({
     url: '/home',
@@ -124,7 +124,7 @@ const newTimeline = () => {
       name: `${timelineName}`,
       description: `${description}`,
       timeAxis: `${checkedValue}`,
-      startDate: `${startDate}`
+      min: `${min}`
     }),
     success: (data) => {
       // console.log(data.message)
@@ -156,6 +156,7 @@ const clearForm = () => {
 const createTimeline = () => {
   $.get('/home/create-timeline')
     .done((result) => {
+      
       if (result === 'No token') {
         window.location = 'http://localhost:3000/start'
       }

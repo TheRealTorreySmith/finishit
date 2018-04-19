@@ -6,7 +6,7 @@ exports.up = (knex, Promise) => {
     table.string('content', 255).notNull().defaultTo('')
     table.string('description', 255).notNull().defaultTo('')
     table.string('start').notNull().defaultTo(knex.raw('now()'))
-    table.string('end').notNull()
+    table.string('end').defaultTo('2018-04-20')
     table.timestamps(true, true)
   })
 }

@@ -12,13 +12,13 @@ const dash = (req, res, next) => {
   if (req.cookies.fstoken) {
     const payload = jwt.verify(req.cookies.fstoken, KEY)
     knex('users')
-    // .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
-    // .select('*')
-      .join('users_timelines', 'users_timelines.users_id', 'users.id')
-      .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
-      .join('events', 'events.timeline_id', 'timelines.id')
-      .where('users.username', payload.username)
+     .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
+       .join('users_timelines', 'users_timelines.users_id', 'users.id')
+       .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
+       .join('events', 'events.timeline_id', 'timelines.id')
+       .where('users.username', payload.username)
       .then((result) => {
+        console.log(result)
         if (result.length < 1) {
           res.render('home', { title: 'Dashboard', username: payload.username, confirm: 'No' })
         } else {
@@ -62,12 +62,14 @@ const getTimelineNames = (req, res, next) => {
 // INSERT NEW TIMELINE INTO DATABASE
 const newTimeline = (req, res, next) => {
   const payload = jwt.verify(req.cookies.fstoken, KEY)
-  console.log(payload)
   knex('timelines')
     .insert({
       name: req.body.name,
       description: req.body.description,
       timeAxis: JSON.stringify({ scale: req.body.timeAxis })
+      // min: req.body.min,
+      // max: req.body.max,
+      // zoomMax: req.body.zoomMax
     })
     .returning(['id'])
     .then((data) => {
@@ -76,10 +78,20 @@ const newTimeline = (req, res, next) => {
           timelines_id: data[0].id,
           users_id: payload.id
         })
-        .then((result) => {
-          res.json({
-            message: 'Successful'
-          })
+        .then((eventData) => {
+          knex('events')
+            .insert({
+              timeline_id: data[0].id,
+              content: 'First Event',
+              description: 'This is your first event'
+              // start: req.body.min
+            })
+            .then((result) => {
+              res.json({
+                message: 'Successful'
+              })
+            })
+
         })
     })
 }
