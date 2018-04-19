@@ -23,7 +23,6 @@ app.use(expressValidator())
 app.use(cookieParser());
 
 
-
 app.use('/', indexRouter);
 app.use('/start', startRouter);
 app.use('/home', homeRouter);

@@ -1,5 +1,6 @@
 //  IMPORTS
 const express = require('express')
+
 const router = express.Router()
 const knex = require('../knex')
 const jwt = require('jsonwebtoken')
@@ -29,7 +30,6 @@ const selectedTimeline = (req, res, next) => {
 
 const getTimelineData = (req, res, next) => {
   const payload = jwt.verify(req.cookies.fstoken, KEY)
-  console.log(payload.username)
   knex.from('timelines')
     .select('*')
     .join('events', 'timelines.id', 'events.timeline_id')
