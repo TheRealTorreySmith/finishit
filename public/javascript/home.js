@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-//  FUNCTIONS CALLED BY EVENT HANDLERS
-
-//  ENABLES THE CREATE BUTTON
-=======
-// FUNCTIONS CALLED BY EVENT HANDLERS
-
-// ENABLES THE CREATE BUTTON
->>>>>>> Made a bunch of changes to routes for home.js and timeline.js
 const enableCreate = () => {
   const timelineName = $('#new-timeline-name').val()
   const description = $('#textarea1').val()
