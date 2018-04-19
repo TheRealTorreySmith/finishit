@@ -76,12 +76,20 @@ const nextButton = () => {
 
 //  CAPTURES A SCREENSHOT FOR ELEMENT WITH ID 'CAPTURE'
 const screenCap = () => {
-  html2canvas(document.querySelector("#capture"), {
-    letterRendering: 1, allowTaint: true
+  html2canvas(document.querySelector('.default-timeline'), {
+    letterRendering: 1, windowHeight: 200, windowWidth: 200
   }).then((pic) => {
-    document.body.append(pic)
+    $('#capture').append(pic)
   })
 }
+
+// const screenCap = () => {
+//   html2canvas(document.querySelector('.default-timeline'), {
+//     letterRendering: 1, allowTaint: true
+//   }).then((pic) => {
+//     $('#capture').append(pic)
+//   })
+// }
 
 //  SCROLLS CAROUSEL TO THE PREVIOUS
 const lastButton = () => {
@@ -127,7 +135,6 @@ const newTimeline = () => {
       min: `${min}`
     }),
     success: (data) => {
-      // console.log(data.message)
       checkTimelineId()
     }
   })
@@ -144,19 +151,11 @@ const clearForm = () => {
   $('#description-error').empty()
 }
 
-// DEFAULT DASHBOARD TIMELINE
-// const defaultTimeline = () => {
-//   const topTime = document.getElementsByClassName('active')
-//   const selectedImage = $(topTime).find('img.selected-image')
-//   const image = selectedImage[0].src
-//   $('.default-timeline-image').attr('src', `${image}`)
-// }
 
 // AJAX CALL TO GET USER COOKIE AND POPULATE PAGE WITH TIMELINES
 const createTimeline = () => {
   $.get('/home/create-timeline')
     .done((result) => {
-      
       if (result === 'No token') {
         window.location = 'http://localhost:3000/start'
       }
@@ -203,7 +202,7 @@ $(document).ready(() => {
   $('.carousel').carousel()
   $('.modal').modal()
   $('.chips').chips()
-  // defaultTimeline()
+
 
 
   // HOME MENU EVENT HANDLERS
@@ -226,5 +225,5 @@ $(document).ready(() => {
 
   // COOKIE EVENT HANDLER
   createTimeline()
-
+  setTimeout(function(){screenCap()}, 1500)
 })

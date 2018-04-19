@@ -21,7 +21,7 @@ const changeDefaultStartDate = () => {
 
 $(document).ready(() => {
   // getCurrentDate()
-  $('#start-date').focus(changeDefaultStartDate)
+  // $('#start-date').focus(changeDefaultStartDate)
   // $('#start-date').keyup(checkDate)
 
 })

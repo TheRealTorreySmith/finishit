@@ -242,3 +242,8 @@ transform: translateY(1px);
   text-align: center;
   color: white;
 }
+
+canvas {
+  height: 200px !important;
+  width: 200px !important;
+}
