@@ -46,3 +46,20 @@ main {
   color: tomato;
   margin-left: 1em;
 }
+
+
+.popout input:focus {
+  border-bottom: 3px solid #00aff0 !important;
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly]) + label {
+  color:white;
+}
+
+input[type=password]:not(.browser-default):focus:not([readonly]) + label {
+  color:white;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label {
+  color:white;
+}
