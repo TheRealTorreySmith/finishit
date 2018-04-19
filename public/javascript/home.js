@@ -76,10 +76,10 @@ const nextButton = () => {
 //  CAPTURES A SCREENSHOT FOR ELEMENT WITH ID 'CAPTURE'
 const screenCap = () => {
   html2canvas(document.querySelector("#capture"), {
-    letterRendering: 1, allowTaint : true
-    }).then(pic => {
-      document.body.append(pic)
-    })
+    letterRendering: 1, allowTaint: true
+  }).then((pic) => {
+    document.body.append(pic)
+  })
 }
 
 //  SCROLLS CAROUSEL TO THE PREVIOUS
@@ -135,6 +135,49 @@ const defaultTimeline = () => {
   $('.default-timeline-image').attr('src', `${image}`)
 }
 
+// AJAX CALL TO GET USER COOKIE AND POPULATE PAGE WITH TIMELINES
+const createTimeline = () => {
+  $.get('/home/create-timeline')
+    .done((result) => {
+      if (result === 'No token') {
+        window.location = 'http://localhost:3000/start'
+      }
+      console.log(result)
+      // DOM element where the Timeline will be attached
+      const container = document.getElementById('dash-vis')
+      // Create object of events needed to populate timeline
+      // const filteredData = result.filter(x => x.id === 1)
+      const dataArr = []
+      const optionsArr = []
+      for (let i = 0; i < result.length; i++) {
+        dataArr.push({
+          id: i,
+          content: result[i]['event.name'],
+          description: result[i]['event.description'],
+          start: result[i]['event.start'],
+          end: result[i]['event.end']
+        })
+      }
+      // Create a DataSet (allows two way data-binding)
+      const items = new vis.DataSet(dataArr)
+
+      // Create an options object that gives customized options to timeline
+      const options = {
+        template: (item, element, data) => {
+          return `<p class="vis-title">${item.content}</p><br><p>${item.description}</p>`
+        },
+        zoomable: false,
+        timeAxis: result[0]['timeline.axis'],
+        orientation: result[0]['timeline.orientation'],
+        height: '350px',
+        zoomMax: parseInt(result[0].zoom),
+        min: result[0].min,
+        max: result[0].max
+      }
+      const timeline = new vis.Timeline(container, items, options)
+
+    })
+}
 
 
 // DOCUMENT READY
@@ -146,7 +189,7 @@ $(document).ready(() => {
   defaultTimeline()
 
 
-  //HOME MENU EVENT HANDLERS
+  // HOME MENU EVENT HANDLERS
   $('.logout').click(logout)
 
   // NEW TIMELINE EVENT HANDLERS
@@ -164,5 +207,8 @@ $(document).ready(() => {
   $('.next').click(nextButton)
   $('.prev').click(lastButton)
   $('.btn-small').click(numButton)
+
+  // COOKIE EVENT HANDLER
+  createTimeline()
 
 })

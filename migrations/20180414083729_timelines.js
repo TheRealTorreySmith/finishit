@@ -10,7 +10,7 @@ exports.up = (knex, Promise) => {
     table.string('height', 10).notNull().defaultTo('400px')
     table.string('min', 255).notNull().defaultTo('now()')
     table.string('max', 255).notNull()
-    table.integer('zoomMax').notNull()
+    table.string('zoomMax').notNull()
     table.boolean('editable').notNull().defaultTo(true)
     table.boolean('selectable').notNull().defaultTo(true)
     table.timestamps(true, true)

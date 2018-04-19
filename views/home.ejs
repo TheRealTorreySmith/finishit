@@ -13,94 +13,106 @@
     <% include partials/home-top-nav %>
     <div class="container">
       <div class="row">
-        <div class="default-timeline col s12 center-align">
-          <a href="#one!"><img class="default-timeline-image" src="#"></a>
-        </div>
+        <h1 class="dash-header"><%= username %>'s Dashboard</h1>
+        <% if (confirm === 'Yes') { %>
+          <div class="default-timeline col s12 center-align">
+            <div id="dash-vis"></div>
+            <!-- <a href="#one!"><img class="default-timeline-image" src="#"></a> -->
+          </div>
+        <% } else { %>
+          <div class="center">
+            <p class="dash-no-timeline">It appears you haven't created a timeline yet! Click below to create one.</p>
+            <a class="modal-trigger new-button" href="#modal3"><button class="no-time-new-button btn">Create New Timeline</button></a>
+          </div>
+        <% } %>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-          <div class="carousel timeline-carousel col s12">
-            <div class="carousel-item">
-              <div class="time-container">
-                <div class="time">
-                  <div class="side">
-                    <a href="#one!"><img id="capture" class="selected-image" height="200px" width="200px" src="https://www.algotech.solutions/blog/wp-content/uploads/2016/02/angular-reactive-chart-hero.jpg"></a>
-                  </div>
-                  <div class="side back">
-                    <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                    <div class="divider"></div>
-                    <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="time-container">
-                <div class="time">
-                  <div class="side">
-                    <a href="#two!"><img class="selected-image" height="200px" width="200px" src="https://h1bportal.com/wp-content/uploads/2016/10/Chart-H1Bportal.jpg"></a>
-                  </div>
-                  <div class="side back">
-                    <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                    <div class="divider"></div>
-                    <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+    <% if (confirm === 'Yes') { %>
+      <div class="container">
+        <div class="row">
+            <div class="carousel timeline-carousel col s12">
+              <div class="carousel-item">
+                <div class="time-container">
+                  <div class="time">
+                    <div class="side">
+                      <a href="#one!"><img id="capture" class="selected-image" height="200px" width="200px" src="https://www.algotech.solutions/blog/wp-content/uploads/2016/02/angular-reactive-chart-hero.jpg"></a>
+                    </div>
+                    <div class="side back">
+                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
+                      <div class="divider"></div>
+                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="carousel-item">
-              <div class="time-container">
-                <div class="time">
-                  <div class="side">
-                    <a href="#three!"><img class="selected-image" height="200px" width="200px" src="http://librarianinblack.net/librarianinblack/wp-content/uploads/TypePadFiles/graph_1.jpg"></a>
-                  </div>
-                  <div class="side back">
-                    <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                    <div class="divider"></div>
-                    <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="time-container">
-                <div class="time">
-                  <div class="side">
-                    <a href="#four!"><img class="selected-image" height="200px" width="200px" src="https://peltiertech.com/images/img200810/EBarB4.png"></a>
-                  </div>
-                  <div class="side back">
-                    <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                    <div class="divider"></div>
-                    <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+              <div class="carousel-item">
+                <div class="time-container">
+                  <div class="time">
+                    <div class="side">
+                      <a href="#two!"><img class="selected-image" height="200px" width="200px" src="https://h1bportal.com/wp-content/uploads/2016/10/Chart-H1Bportal.jpg"></a>
+                    </div>
+                    <div class="side back">
+                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
+                      <div class="divider"></div>
+                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="carousel-item">
-              <div class="time-container">
-                <div class="time">
-                  <div class="side">
-                    <a href="#five!"><img class="selected-image" height="200px" width="200px" src="http://www.consultantjournal.com/wp-content/uploads/chart%201.jpg"></a>
-                  </div>
-                  <div class="side back">
-                    <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                    <div class="divider"></div>
-                    <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+              <div class="carousel-item">
+                <div class="time-container">
+                  <div class="time">
+                    <div class="side">
+                      <a href="#three!"><img class="selected-image" height="200px" width="200px" src="http://librarianinblack.net/librarianinblack/wp-content/uploads/TypePadFiles/graph_1.jpg"></a>
+                    </div>
+                    <div class="side back">
+                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
+                      <div class="divider"></div>
+                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-        </div>
-        <div class="carousel-fixed-item center">
-          <a class="btn darken-text-2 prev">Last</a>
-          <a class="btn darken-text-2 next">Next</a><br>
-          <button class="btn-small darken-text-2">1</button>
-          <button class="btn-small darken-text-2">2</button>
-          <button class="btn-small darken-text-2">3</button>
+              <div class="carousel-item">
+                <div class="time-container">
+                  <div class="time">
+                    <div class="side">
+                      <a href="#four!"><img class="selected-image" height="200px" width="200px" src="https://peltiertech.com/images/img200810/EBarB4.png"></a>
+                    </div>
+                    <div class="side back">
+                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
+                      <div class="divider"></div>
+                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="time-container">
+                  <div class="time">
+                    <div class="side">
+                      <a href="#five!"><img class="selected-image" height="200px" width="200px" src="http://www.consultantjournal.com/wp-content/uploads/chart%201.jpg"></a>
+                    </div>
+                    <div class="side back">
+                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
+                      <div class="divider"></div>
+                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="carousel-fixed-item center">
+            <a class="btn darken-text-2 prev">Last</a>
+            <a class="btn darken-text-2 next">Next</a><br>
+            <button class="btn-small darken-text-2">1</button>
+            <button class="btn-small darken-text-2">2</button>
+            <button class="btn-small darken-text-2">3</button>
+          </div>
         </div>
       </div>
-    </div>
+    <% } %>
+
     <% include partials/modals %>
     <% include partials/footer %>
 

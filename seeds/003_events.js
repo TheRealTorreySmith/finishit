@@ -10,14 +10,16 @@ exports.seed = (knex, Promise) => {
           timeline_id: 1,
           content: 'Bathe Dog',
           description: 'I need to bathe the dog',
-          end: '2018-04-20'
+          start: '2018-04-19 08:30:00',
+          end: '2018-04-19 16:30:00'
         },
         {
           id: 2,
           timeline_id: 1,
           content: 'Bathe Cat',
           description: 'I need to bathe the cat',
-          end: '2018-04-20'
+          start: '2018-04-19 10:30:00',
+          end: '2018-04-19 14:30:00'
         }
       ])
         .then(() => {

@@ -50,10 +50,34 @@
 transform: translateY(1px);
 }
 
+.dash-header {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  color:black;
+}
 
+.dash-no-timeline {
+  font-weight: 700;
+  color:black;
+  font-family: 'Lato', sans-serif;
+  text-align:center;
+  font-size: 20px;
+}
+
+.no-time-new-button {
+  background-color: black;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  height: 40px;
+}
+
+.no-time-new-button:hover {
+  background-color: #00aff0;
+}
 /* HOME DISPLAY TIMELINE */
 .default-timeline {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 350px;
   margin-top: 30px;
 }
@@ -155,4 +179,66 @@ transform: translateY(1px);
   color: #eaeaed;
   line-height: 96px;
   transform: rotateY(180deg);
+}
+
+#visualization {
+  position: relative;
+}
+
+.vis-button {
+  background-color: black;
+  color: white;
+  border: 0px;
+  font-family: 'Lato', sans-serif;
+  height: 30px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 150px;
+  margin: 10px;
+  z-index: 100;
+}
+
+
+.vis-timeline {
+  border: 3px solid #0380f5;
+  font-family: 'Arial Narrow';
+  font-size: 12px;
+  background: #00aff0;
+  opacity: .7;
+  color: white;
+}
+
+.vis-item,
+.vis-item.vis-line {
+  border: 3px solid black;;
+  background-color: black;
+  opacity: 0.9;
+  height: 60px;
+}
+
+.vis-item.vis-dot {
+  border-width: 10px;
+  border-radius: 10px;
+}
+
+.vis-title {
+  color:white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  line-height: 0px;
+}
+
+.vis-time-axis .vis-text {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+}
+
+.mission-statement {
+  text-align: center;
+  color: white;
 }

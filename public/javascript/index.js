@@ -90,7 +90,7 @@ const getCookieInfo = () => {
     .done((result) => {
       // console.log(result.message)
       if (result.message === 'Success') {
-        window.location = `http://localhost:3000/home/${result.id}`
+        window.location = 'http://localhost:3000/home'
       }
     })
 }
