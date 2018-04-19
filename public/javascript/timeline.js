@@ -1,8 +1,7 @@
 
 const getTimeline = () => {
-  $.get('/home/timeline/:timelineId/getTimeline')
+  $.get('/home/timeline/:id/getTimeline')
     .done((result) => {
-      console.log(result)
       // DOM element where the Timeline will be attached
       const container = document.getElementById('visual')
       // Create object of events needed to populate timeline
@@ -48,7 +47,7 @@ const createNewEvent = () => {
 // CREATE A POST REQUEST TO ADD EVENT TO DB
 const postNewEvent = () => {
   $.ajax({
-    url: 'home/timeline/:timelineId/newevent',
+    url: '/:id/newevent',
     type: 'POST',
     dataType: 'json',
     contentType: 'application/json; charset=utf-8',
