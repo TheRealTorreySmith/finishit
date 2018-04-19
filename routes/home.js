@@ -11,6 +11,7 @@ const KEY = process.env.JWT_KEY
 const dash = (req, res, next) => {
   if (req.cookies.fstoken) {
     const payload = jwt.verify(req.cookies.fstoken, KEY)
+    console.log(payload.id)
     knex('users')
       .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
       .join('users_timelines', 'users_timelines.users_id', 'users.id')
