@@ -13,7 +13,7 @@ const selectedTimeline = (req, res, next) => {
     .select('*')
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .join('users', 'users.id', 'users_timelines.users_id')
-    .where('users_timelines.timelines_id', req.params.timelineId)
+    .where('users_timelines.timelines_id', req.params.id)
     .then((result) => {
       const selectedDuration = result[0].timeAxis.scale
       const timelineName = result[0].name
@@ -26,11 +26,6 @@ const selectedTimeline = (req, res, next) => {
       })
     })
 }
-
-const renderPage = (req, res, next) => {
-  res.render('timeline', { title: ' The Default Timeline Page' })
-}
-
 
 const getTimelineData = (req, res, next) => {
   const payload = jwt.verify(req.cookies.fstoken, KEY)
@@ -48,17 +43,22 @@ const getTimelineData = (req, res, next) => {
 }
 
 const createNewEvent = (req, res, next) => {
-  console.log(req.body)
-  // knex('events')
-  // .insert({
-  //
-  // })
-  res.json({ message: 'success' })
+  const currentDate = new Date()
+  const date = currentDate.getDate()
+  const month = currentDate.getMonth()
+  const year = currentDate.getFullYear()
+  const dateString = `${date}-${month + 1}-${year}`
+  const { content, description, start, end } = req.body
+  knex('events')
+    .where('timeline_id', req.params.timelineId)
+    .insert({ content, description, start, end })
+    .then(() => {
+      res.json({ message: 'success' })
+    })
 }
 
 
 // ROUTE REQUESTS
-router.get('/', renderPage)
 router.get('/default', getTimelineData)
 router.get('/:id', selectedTimeline)
 router.post('/:timelineId/newevent', createNewEvent)

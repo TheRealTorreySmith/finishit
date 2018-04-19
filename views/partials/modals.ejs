@@ -92,11 +92,13 @@
 
       <label for="new-event-start-time">START TIME:</label>
       <span class="new-event-error new-event-start-time-error"></span>
-      <input type="text" id="new-event-start-time" name="new-event-start-time" required>
+      <input id="start-date" type="date" id="new-event-start-time-date" name="new-event-start-time">
+      <input id="start-time" type="time" id="new-event-start-time-hour" name="new-event-start-time">
 
       <label for="new-event-end-time">END TIME:</label>
       <span class="new-event-error new-event-end-time-error"></span>
-      <input type="text" id="new-event-end-time" name="new-event-end-time" required>
+      <input id="end-date" type="date" id="new-event-end-date" name="new-event-end-date" required>
+      <input id="end-time" type="time" id="new-event-end--hour" name="new-event-end-time" required>
 
       <input type="submit" id='new-event-submit-button' class='class="modal-action modal-close btn-flat create-button"' value="ADD EVENT">
       <span class="new-event-error" id="general-new-event-error"></span>
