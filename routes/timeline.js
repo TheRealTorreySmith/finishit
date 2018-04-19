@@ -9,13 +9,14 @@ const env = require('dotenv').config()
 const KEY = process.env.JWT_KEY
 
 /* GET TIMELINE PAGE */
-const selectedTimeline = (req, res, next) => {
+const selectedTimelinePage = (req, res, next) => {
   knex.from('timelines')
-    .select('*')
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
-    .join('users', 'users.id', 'users_timelines.users_id')
+    .join('users', 'users_timelines.users_id', 'users.id')
     .where('users_timelines.timelines_id', req.params.id)
+    .returning(['name', 'timeAxis', 'description'])
     .then((result) => {
+      console.log(result)
       const selectedDuration = result[0].timeAxis.scale
       const timelineName = result[0].name
       const timelineDescription = result[0].description
@@ -43,14 +44,9 @@ const getTimelineData = (req, res, next) => {
 }
 
 const createNewEvent = (req, res, next) => {
-  const currentDate = new Date()
-  const date = currentDate.getDate()
-  const month = currentDate.getMonth()
-  const year = currentDate.getFullYear()
-  const dateString = `${date}-${month + 1}-${year}`
   const { content, description, start, end } = req.body
   knex('events')
-    .where('timeline_id', req.params.timelineId)
+    .where('timeline_id', req.params.id)
     .insert({ content, description, start, end })
     .then(() => {
       res.json({ message: 'success' })
@@ -59,9 +55,9 @@ const createNewEvent = (req, res, next) => {
 
 
 // ROUTE REQUESTS
-router.get('/default', getTimelineData)
-router.get('/:id', selectedTimeline)
-router.post('/:timelineId/newevent', createNewEvent)
+router.get('/:id/getTimeline', getTimelineData)
+router.get('/:id', selectedTimelinePage)
+router.post('/:id/newevent', createNewEvent)
 
 // EXPORTS
 module.exports = router
