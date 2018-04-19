@@ -12,13 +12,14 @@ let currentSelectedTimelineId
 
 /* GET TIMELINE PAGE */
 const selectedTimelinePage = (req, res, next) => {
-   currentSelectedTimelineId = req.params.id
+  currentSelectedTimelineId = req.params.id
   knex.from('timelines')
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .join('users', 'users_timelines.users_id', 'users.id')
     .where('users_timelines.timelines_id', req.params.id)
     .returning(['name', 'timeAxis', 'description'])
     .then((result) => {
+      console.log(result)
       const selectedDuration = result[0].timeAxis.scale
       const timelineName = result[0].name
       const timelineDescription = result[0].description
