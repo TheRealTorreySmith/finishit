@@ -42,8 +42,8 @@ const getUserEmails = (req, res, next) => {
 
 // QUERY DATABASE FOR TIMELINE ID
 const getTimelineId = (req, res, next) => {
-  knex('users')
-    .select('users.id')
+  knex('timelines')
+    .select('timelines.id')
     .then((timelineId) => {
       res.json(timelineId)
     })

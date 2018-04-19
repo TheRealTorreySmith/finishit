@@ -135,7 +135,7 @@ input:not([type]):focus:not([readonly]) {
 }
 
 #start-date {
-  width: 30%;
+  width: 50%;
   text-align: center;
   border-bottom: 1px solid #00aff0;
   -webkit-box-shadow: 0 1px 0 0 #00aff0;
@@ -155,10 +155,10 @@ input:not([type]):focus:not([readonly]) {
    {
     display: inline-block;
     margin: 0 .5em;
-    width: 30%;
+    width: 50%;
   }
 
   #new-event-submit-button {
     margin-top: 1em;
-  }  
+  }
 }

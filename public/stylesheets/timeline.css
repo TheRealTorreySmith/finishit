@@ -35,6 +35,8 @@ main {
   background: #00aff0;
   opacity: .7;
   color: white;
+  visibility: visible !important;
+  height: 350px !important;
 }
 
 .vis-item,
