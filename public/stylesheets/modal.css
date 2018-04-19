@@ -160,5 +160,5 @@ input:not([type]):focus:not([readonly]) {
 
   #new-event-submit-button {
     margin-top: 1em;
-  }  
+  }
 }

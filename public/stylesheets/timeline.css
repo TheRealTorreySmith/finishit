@@ -8,6 +8,7 @@ main {
   flex: 1 0 auto;
 }
 
+
 #visualization {
   position: relative;
 }
@@ -35,6 +36,8 @@ main {
   background: #00aff0;
   opacity: .7;
   color: white;
+  visibility: visible !important;
+  height: 350px !important;
 }
 
 .vis-item,
@@ -64,10 +67,12 @@ main {
   font-size: 20px;
 }
 
+
 .btn {
   background-color: #00aff0;
   color:white;
   transition: .3s;
+  margin-bottom: 2em;
 }
 .btn:hover {
   background: #00aff0;
