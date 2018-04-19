@@ -36,7 +36,7 @@ const getTimelineData = (req, res, next) => {
     .join('events', 'timelines.id', 'events.timeline_id')
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .join('users', 'users.id', 'users_timelines.users_id')
-    .where('users.username', 'mitchl')
+    .where('users.username', payload.username)
     .where('timelines.id', req.params.id)
     .then((result) => {
       res.send(result)

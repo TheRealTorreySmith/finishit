@@ -47,8 +47,12 @@ const addUser = (req, res, next) => {
       email: req.body.signupEmail,
       hashed_password: hashedPass
     })
-    .then(() => {
-      const fstoken = jwt.sign({ username: req.body.signupUsername }, KEY)
+    .returning(['id'])
+    .then((result) => {
+      const fstoken = jwt.sign({
+        username: req.body.signupUsername,
+        id: result[0].id
+      }, KEY)
       res.cookie('fstoken', fstoken, { httpOnly: true })
       res.status(200).json({ message: 'success' })
     })
@@ -57,12 +61,15 @@ const addUser = (req, res, next) => {
 const loginUser = (req, res, next) => {
   knex('users')
     .where('username', req.body.loginUsername)
-    .select('hashed_password')
+    .select('hashed_password', 'id')
     .then((result) => {
       const storedHash = result[0].hashed_password
       bcrypt.compare(req.body.loginPassword, storedHash, (err, passwordsMatch) => {
         if (passwordsMatch && req.cookies.fstoken === undefined) {
-          const fstoken = jwt.sign({ username: req.body.loginUsername }, KEY)
+          const fstoken = jwt.sign({
+            username: req.body.loginUsername,
+            id: result[0].id 
+          }, KEY)
           res.cookie('fstoken', fstoken, { httpOnly: true })
           res.status(200).json({ message: 'success' })
         } else if (passwordsMatch && req.cookies.fstoken !== undefined) {
