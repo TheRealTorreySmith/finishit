@@ -39,6 +39,16 @@ const getUserEmails = (req, res, next) => {
     })
 }
 
+// QUERY DATABASE FOR TIMELINE ID
+const getTimelineId = (req, res, next) => {
+  knex('users')
+    .select('users.id')
+    .then((timelineId) => {
+      res.json(timelineId)
+    })
+}
+
+
 //  QUERY DATABASE FOR ALL TIMELINE NAMES
 const getTimelineNames = (req, res, next) => {
   knex('timelines')
@@ -51,14 +61,26 @@ const getTimelineNames = (req, res, next) => {
 
 // INSERT NEW TIMELINE INTO DATABASE
 const newTimeline = (req, res, next) => {
+  const payload = jwt.verify(req.cookies.fstoken, KEY)
+  console.log(payload)
   knex('timelines')
     .insert({
       name: req.body.name,
       description: req.body.description,
       timeAxis: JSON.stringify({ scale: req.body.timeAxis })
     })
-    .then((result) => {
-      res.json({ message: 'Successful' })
+    .returning(['id'])
+    .then((data) => {
+      knex('users_timelines')
+        .insert({
+          timelines_id: data[0].id,
+          users_id: payload.id
+        })
+        .then((result) => {
+          res.json({
+            message: 'Successful'
+          })
+        })
     })
 }
 
@@ -67,7 +89,6 @@ const getCookie = (req, res, next) => {
   const payload = jwt.verify(req.cookies.fstoken, KEY)
   knex('users')
     .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
-    // .select('*')
     .join('users_timelines', 'users_timelines.users_id', 'users.id')
     .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
     .join('events', 'events.timeline_id', 'timelines.id')
@@ -85,6 +106,7 @@ router.get('/', dash)
 router.get('/create-timeline', getCookie)
 router.get('/emails', getUserEmails)
 router.get('/names', getTimelineNames)
+router.get('/timeline/id', getTimelineId)
 router.post('/', newTimeline)
 
 //  EXPORTS

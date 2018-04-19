@@ -98,6 +98,16 @@ const logout = () => {
   window.location.href = 'http://localhost:3000/login'
 }
 
+//  GET TIMELINE ID
+const checkTimelineId = () => {
+  return $.get('/home/timeline/id')
+    .done((result) => {
+      const num = result.length - 1
+      // window.location.href = `http://localhost:3000/home/timeline/${result[num].id}`
+    })
+    .fail(err => err)
+}
+
 //  AJAX POST NEW TIMELINE
 const newTimeline = () => {
   const timelineName = $('#new-timeline-name').val()
@@ -118,11 +128,10 @@ const newTimeline = () => {
     }),
     success: (data) => {
       // console.log(data.message)
+      checkTimelineId()
     }
   })
-
 }
-
 
 //  CLEARS THE FORM ON CLEAR AND SUBMISSION
 const clearForm = () => {
@@ -136,12 +145,12 @@ const clearForm = () => {
 }
 
 // DEFAULT DASHBOARD TIMELINE
-const defaultTimeline = () => {
-  const topTime = document.getElementsByClassName('active')
-  const selectedImage = $(topTime).find('img.selected-image')
-  const image = selectedImage[0].src
-  $('.default-timeline-image').attr('src', `${image}`)
-}
+// const defaultTimeline = () => {
+//   const topTime = document.getElementsByClassName('active')
+//   const selectedImage = $(topTime).find('img.selected-image')
+//   const image = selectedImage[0].src
+//   $('.default-timeline-image').attr('src', `${image}`)
+// }
 
 // AJAX CALL TO GET USER COOKIE AND POPULATE PAGE WITH TIMELINES
 const createTimeline = () => {
@@ -150,7 +159,7 @@ const createTimeline = () => {
       if (result === 'No token') {
         window.location = 'http://localhost:3000/start'
       }
-      console.log(result)
+
       // DOM element where the Timeline will be attached
       const container = document.getElementById('dash-vis')
       // Create object of events needed to populate timeline
@@ -193,7 +202,7 @@ $(document).ready(() => {
   $('.carousel').carousel()
   $('.modal').modal()
   $('.chips').chips()
-  defaultTimeline()
+  // defaultTimeline()
 
 
   // HOME MENU EVENT HANDLERS
