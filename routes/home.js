@@ -18,6 +18,7 @@ const dash = (req, res, next) => {
       .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
       .join('events', 'events.timeline_id', 'timelines.id')
       .where('users.username', payload.username)
+      .where('events.timeline_id', )
       .then((result) => {
         console.log(result)
         if (result.length < 1) {
