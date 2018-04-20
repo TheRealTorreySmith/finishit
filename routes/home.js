@@ -33,23 +33,23 @@ const dash = (req, res, next) => {
       .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
       .where('users_timelines.users_id', payload.id)
       .then((tId) => {
-        mostRecentTimelineId = tId[tId.length - 1].id
-        knex('users')
-          .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
-          .join('users_timelines', 'users_timelines.users_id', 'users.id')
-          .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
-          .join('events', 'events.timeline_id', 'timelines.id')
-          .where('users.username', payload.username)
-          .where('events.timeline_id', mostRecentTimelineId)
-          .where('timelines.id', mostRecentTimelineId)
-          .then((result) => {
-            console.log(result)
-            if (result.length < 1) {
-              res.render('home', { title: 'Dashboard', username: payload.username, confirm: 'No' })
-            } else {
+        if (tId.length < 1) {
+          res.render('home', { title: 'Dashboard', username: payload.username, confirm: 'No' })
+        } else {
+          mostRecentTimelineId = tId[tId.length - 1].id
+          knex('users')
+            .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
+            .join('users_timelines', 'users_timelines.users_id', 'users.id')
+            .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
+            .join('events', 'events.timeline_id', 'timelines.id')
+            .where('users.username', payload.username)
+            .where('events.timeline_id', mostRecentTimelineId)
+            .where('timelines.id', mostRecentTimelineId)
+            .then((result) => {
+              console.log(result)
               res.render('home', { title: 'Dashboard', username: payload.username, confirm: 'Yes' })
-            }
-          })
+            })
+        }
       })
   } else {
     res.redirect('/start')
@@ -87,15 +87,30 @@ const getTimelineNames = (req, res, next) => {
 
 // INSERT NEW TIMELINE INTO DATABASE
 const newTimeline = (req, res, next) => {
+  // console.log(req.body)
+  // console.log(req.body.min.split('-'))
+  const splitMin = req.body.min.split('-')
+  const min = `${req.body.min} 00:00:00`
+
+  let timeScale
+  let max
+  let zoomMax
+
+  if (req.body.timeAxis === 'day') {
+    splitMin[2] = (parseInt(splitMin[2]) + 1).toString()
+    max = `${splitMin.join('-')} 00:00:00`
+    timeScale = 'hour'
+    zoomMax = 50000000
+  }
   const payload = jwt.verify(req.cookies.fstoken, KEY)
   knex('timelines')
     .insert({
       name: req.body.name,
       description: req.body.description,
-      timeAxis: JSON.stringify({ scale: req.body.timeAxis })
-      // min: req.body.min,
-      // max: req.body.max,
-      // zoomMax: req.body.zoomMax
+      timeAxis: JSON.stringify({ scale: timeScale }),
+      min,
+      max,
+      zoomMax
     })
     .returning(['id'])
     .then((data) => {
@@ -130,21 +145,21 @@ const getCookie = (req, res, next) => {
     .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
     .where('users_timelines.users_id', payload.id)
     .then((tId) => {
-      mostRecentTimelineId = tId[tId.length - 1].id
-      knex('users')
-        .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
-        .join('users_timelines', 'users_timelines.users_id', 'users.id')
-        .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
-        .join('events', 'events.timeline_id', 'timelines.id')
-        .where('users.username', payload.username)
-        .where('events.timeline_id', mostRecentTimelineId)
-        .then((result) => {
-          if (result.length < 1) {
-            res.send('no timeline')
-          } else {
+      if (tId.length < 1) {
+        res.send('no timeline')
+      } else {
+        mostRecentTimelineId = tId[tId.length - 1].id
+        knex('users')
+          .select(['timelines.created_at AS timeline.created', 'timelines.description AS timeline.description', 'timelines.updated_at AS timeline.updated', 'timelines.name AS timeline.name', 'timelines.orientation AS timeline.orientation', 'timelines.timeAxis AS timeline.axis', 'events.content AS event.name', 'events.description AS event.description', 'events.start AS event.start', 'events.end AS event.end', 'timelines.zoomMax AS zoom', 'timelines.min AS min', 'timelines.max AS max'])
+          .join('users_timelines', 'users_timelines.users_id', 'users.id')
+          .join('timelines', 'timelines.id', 'users_timelines.timelines_id')
+          .join('events', 'events.timeline_id', 'timelines.id')
+          .where('users.username', payload.username)
+          .where('events.timeline_id', mostRecentTimelineId)
+          .then((result) => {
             res.json(result)
-          }
-        })
+          })
+      }
     })
 }
 

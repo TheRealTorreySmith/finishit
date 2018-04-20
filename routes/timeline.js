@@ -41,6 +41,7 @@ const getTimelineData = (req, res, next) => {
     .join('users', 'users.id', 'users_timelines.users_id')
     .where('users.username', payload.username)
     .where('timelines.id', currentSelectedTimelineId)
+    .where('events.timeline_id', currentSelectedTimelineId)
     .then((result) => {
       res.send(result)
     })
@@ -51,7 +52,12 @@ const createNewEvent = (req, res, next) => {
   const { content, description, start, end } = req.body
   knex('events')
     .where('timeline_id', currentSelectedTimelineId)
-    .insert({ content, description, start, end })
+    .insert({
+      timeline_id: currentSelectedTimelineId,
+      content,
+      description,
+      start,
+      end })
     .then(() => {
       res.json({
         message: 'success',
@@ -60,10 +66,25 @@ const createNewEvent = (req, res, next) => {
     })
 }
 
+const deleteEvent = (req, res, next) => {
+  const { id, content } = req.body
+  knex('events')
+    .where('events.content', content)
+    .where('events.timeline_id', id)
+    .del()
+    .then(() => {
+      res.json({
+        message: 'success'
+      })
+    })
+}
+
+
 // ROUTE REQUESTS
 router.get('/getTimeline', getTimelineData)
 router.get('/:id', selectedTimelinePage)
 router.post('/newevent', createNewEvent)
+router.post('/deleteevent', deleteEvent)
 
 // EXPORTS
 module.exports = router

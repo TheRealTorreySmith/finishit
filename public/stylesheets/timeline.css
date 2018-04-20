@@ -77,3 +77,13 @@ main {
 .btn:hover {
   background: #00aff0;
 }
+
+#event-description-button {
+  display: none;
+}
+
+.event-modal-header {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
