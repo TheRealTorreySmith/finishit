@@ -10,7 +10,7 @@ A full-stack web application that is used to successfully manage tasks, processe
 
 Open http://mtn-finishit.herokuapp.com
 
-If you already have an account, click 'Login' in the top right corner. If you are a new users, click 'Signup':![navbar-login-signup](/images/login.png)
+If you already have an account, click 'Login' in the top right corner. If you are a new users, click 'Signup':![navbar-login-signup](public/images/login.png)
 
 <!-- You can navigate to any of these pages through a number of means:
 
