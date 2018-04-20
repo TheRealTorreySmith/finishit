@@ -133,7 +133,7 @@ $(document).ready(() => {
         data: JSON.stringify(createRequestSignup()),
         success: (data) => {
           if (data.message === 'success') {
-            window.location = 'http://localhost:3000/home'
+            window.location = '/home'
           }
         }
       }) // end ajax
