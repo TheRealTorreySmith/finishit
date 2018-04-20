@@ -1,5 +1,5 @@
 # finishit
-A full-stack web application that is used to successfully manage tasks, processes, and projects.
+A full-stack web application that is used to manage tasks, processes, and projects.
 ![landing-page](public/images/landing.png)
 
 ## Table of Contents
