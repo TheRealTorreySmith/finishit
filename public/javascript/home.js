@@ -95,7 +95,7 @@ const numButton = (event) => {
 
 //  REDIRECTS USER TO LOGIN PAGE
 const logout = () => {
-  window.location.href = 'http://localhost:3000/login'
+  window.location.href = '/login'
 }
 
 //  GET TIMELINE ID
@@ -103,7 +103,7 @@ const checkTimelineId = () => {
   return $.get('/home/timeline/id')
     .done((result) => {
       const num = result.length - 1
-      window.location.href = `http://localhost:3000/home/timeline/${result[num].id}`
+      window.location.href = `/home/timeline/${result[num].id}`
     })
     .fail(err => err)
 }
@@ -149,7 +149,7 @@ const createTimeline = () => {
   $.get('/home/create-timeline')
     .done((result) => {
       if (result === 'No token') {
-        window.location = 'http://localhost:3000/start'
+        window.location = '/start'
       }
 
       // DOM element where the Timeline will be attached

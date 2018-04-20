@@ -77,7 +77,7 @@ const postNewEvent = () => {
     success: (data) => {
       if (data.message === 'success') {
         console.log(data)
-        window.location = `http://localhost:3000/home/timeline/${data.timelineId}`
+        window.location = `/home/timeline/${data.timelineId}`
       }
     }
   }) // end ajax
