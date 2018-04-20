@@ -52,9 +52,9 @@ $(document).ready(() => {
         data: JSON.stringify(createRequestLogin()),
         success: (data) => {
           if (data.message === 'success') {
-            window.location = 'http://localhost:3000/home'
+            window.location = '/home'
           } else if (data.message === 'fail'){
-            window.location = 'http://localhost:3000/start#login-collapsible'
+            window.location = '/start#login-collapsible'
             $('#general-login-error').empty()
             $('#general-login-error').text('Username and password don\'t match.')
           }
