@@ -87,3 +87,8 @@ main {
   margin: 10px;
   z-index: 100;
 }
+
+#new-event-form span {
+  display: block;
+  color: tomato;
+}

@@ -23,6 +23,8 @@ module.exports = {
     "consistent-return": "off",
     "newline-per-chained-call": "off",
     "no-unneeded-ternary": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "spaced-comment": "off",
+    "no-multiple-empty-lines": "off"
   }
 };

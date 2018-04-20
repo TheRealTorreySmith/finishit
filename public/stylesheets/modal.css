@@ -174,3 +174,8 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label {
 input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   color:white;
 }
+
+#general-new-event-error {
+  color: tomato;
+  margin: 1em;
+}
