@@ -9,6 +9,8 @@ const env = require('dotenv').config()
 const KEY = process.env.JWT_KEY
 
 let currentSelectedTimelineId
+let currentTimelineStart
+let currentTimelineEnd
 
 /* GET TIMELINE PAGE */
 const selectedTimelinePage = (req, res, next) => {
@@ -19,7 +21,8 @@ const selectedTimelinePage = (req, res, next) => {
     .where('users_timelines.timelines_id', req.params.id)
     .returning(['name', 'timeAxis', 'description'])
     .then((result) => {
-      console.log(result)
+      currentTimelineStart = result[0].min
+      currentTimelineEnd = result[0].max
       const selectedDuration = result[0].timeAxis.scale
       const timelineName = result[0].name
       const timelineDescription = result[0].description
@@ -48,7 +51,6 @@ const getTimelineData = (req, res, next) => {
 }
 
 const createNewEvent = (req, res, next) => {
-  console.log(currentSelectedTimelineId)
   const { content, description, start, end } = req.body
   knex('events')
     .where('timeline_id', currentSelectedTimelineId)
@@ -79,9 +81,25 @@ const deleteEvent = (req, res, next) => {
     })
 }
 
+const getEventNames = (req, res, next) => {
+  return knex('events')
+    .select('content')
+    .where('timeline_id', currentSelectedTimelineId)
+    .then((result) => {
+      console.log(result)
+      res.json(result)
+    })
+}
+
+const getTimelineStartEnd = (req, res, next) => {
+  res.json({ currentTimelineStart, currentTimelineEnd })
+}
+
 
 // ROUTE REQUESTS
 router.get('/getTimeline', getTimelineData)
+router.get('/getEventNames', getEventNames)
+router.get('/getTimelineStartEnd', getTimelineStartEnd)
 router.get('/:id', selectedTimelinePage)
 router.post('/newevent', createNewEvent)
 router.post('/deleteevent', deleteEvent)

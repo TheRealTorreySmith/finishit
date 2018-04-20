@@ -1,3 +1,128 @@
+let eventNameIsTaken = true
+let eventTimeIsValid = false
+
+
+// GET ALL EVENT NAMES THAT ARE ASSOCIATED WITH THIS TIMELINE
+const getEventNames = () => {
+  return $.get('/home/timeline/getEventNames')
+    .done((result) => {
+      const enteredEventName = $('#new-event-name').val().toLowerCase().trim()
+      const eventNames = result.map(x => x.content.toLowerCase())
+      eventNameIsTaken = eventNames.includes(enteredEventName) ? true : false
+      if (eventNameIsTaken) {
+        $('.new-event-form-name-error').empty()
+        $('.new-event-form-name-error').text(` Whoops. "${enteredEventName}" already exists.`)
+      } else {
+        $('.new-event-form-name-error').empty()
+      }
+    })
+    .fail(err => err)
+}
+
+const checkEventStart = () => {
+  return $.get('/home/timeline/getTimelineStartEnd')
+    .done((result) => {
+
+    ////////////////// EVENT ****START*** DATE / TIME /////////////////////////
+
+      // START
+      // ENTERED START DATE AND TIME
+      const enteredStartDate = $('#new-event-start-date').val().trim()
+      const enteredStartYear = enteredStartDate.slice(0, 4)
+      const enteredStartMonth = enteredStartDate.slice(5, 7)
+      const enteredStartDay = enteredStartDate.slice(8, 10)
+
+      // START
+      // CURRENT TIMELINE START DATE AND TIME
+      const currentTimelineStartYear = result.currentTimelineStart.slice(0, 4)
+      const currentTimelineStartMonth = result.currentTimelineStart.slice(5, 7)
+      const currentTimelineStartDay = result.currentTimelineStart.slice(8, 10)
+      // END
+      // CURRENT TIMELINE END DATE AND TIME
+      const currentTimelineEndYear = result.currentTimelineEnd.slice(0, 4)
+      const currentTimelineEndMonth = result.currentTimelineEnd.slice(5, 7)
+      const currentTimelineEndDay = result.currentTimelineEnd.slice(8, 10)
+
+      // START
+      // CHECK IF THE ENTERED DATE IS INSIDE OF THE SCOPE OF THE TIMLINE
+      if ( (enteredStartYear >= currentTimelineStartYear && enteredStartYear <= currentTimelineEndYear) === false ||
+        (eventTimeIsValid = enteredStartMonth >= currentTimelineStartMonth && enteredStartMonth <= currentTimelineEndMonth) === false ||
+        (eventTimeIsValid = enteredStartDay >= currentTimelineStartDay && enteredStartDay < currentTimelineEndDay) === false
+      ) {
+        eventTimeIsValid = false
+      } else {
+        eventTimeIsValid = true
+      }
+
+      // START
+      // IF THE USER HAS ENTERED A DATE THAT IS OUTSIDE OF THE SCOPE, PRESENT AN ERROR
+      if (!eventTimeIsValid) {
+        $('.new-event-form-name-error').empty()
+        $('.new-event-form-name-error').text(` Whoops. "${enteredStartDate}" is outside of your timeline scope.`)
+      } else {
+        $('.new-event-form-name-error').empty()
+      }
+
+
+
+
+    }) // END AJAX CALL
+    .fail(err => err)
+}
+
+
+
+const checkEventEnd = () => {
+  return $.get('/home/timeline/getTimelineStartEnd')
+    .done((result) => {
+
+      ////////////////// EVENT END DATE / TIME ////////////////////////////
+
+      // START
+      // CURRENT TIMELINE START DATE AND TIME
+      const currentTimelineStartYear = result.currentTimelineStart.slice(0, 4)
+      const currentTimelineStartMonth = result.currentTimelineStart.slice(5, 7)
+      const currentTimelineStartDay = result.currentTimelineStart.slice(8, 10)
+
+
+      // END
+      // CURRENT TIMELINE END DATE AND TIME
+      const currentTimelineEndYear = result.currentTimelineEnd.slice(0, 4)
+      const currentTimelineEndMonth = result.currentTimelineEnd.slice(5, 7)
+      const currentTimelineEndDay = result.currentTimelineEnd.slice(8, 10)
+
+      // END
+      // ENTERED END DATE AND TIME
+      const enteredEndDate = $('#new-event-end-date').val().trim()
+      const enteredEndYear = enteredEndDate.slice(0, 4)
+      const enteredEndMonth = enteredEndDate.slice(5, 7)
+      const enteredEndDay = enteredEndDate.slice(8, 10)
+
+      // END
+      // CHECK IF THE ENTERED DATE IS INSIDE OF THE SCOPE OF THE TIMLINE
+      if ( (enteredEndYear <= currentTimelineEndYear && enteredEndYear >= currentTimelineStartYear) === false ||
+           (enteredEndMonth <= currentTimelineEndMonth && enteredEndMonth >= currentTimelineStartMonth) === false ||
+           (enteredEndDay < currentTimelineEndDay && enteredEndDay >= currentTimelineStartDay) === false)
+      {
+       eventTimeIsValid = false
+      } else {
+      eventTimeIsValid = true
+      }
+
+      // END
+      // IF THE USER HAS ENTERED A DATE THAT IS OUTSIDE OF THE SCOPE, PRESENT AN ERROR
+      if (!eventTimeIsValid) {
+        $('.new-event-form-name-error').empty()
+        $('.new-event-form-name-error').text(` Whoops. "${enteredEndDate}" is outside of your timeline scope.`)
+      } else {
+        $('.new-event-form-name-error').empty()
+      }
+
+
+    }) // END AJAX CALL
+    .fail(err => err)
+}
+
 
 const getTimeline = () => {
   $.get('/home/timeline/getTimeline')
@@ -92,10 +217,31 @@ $(document).ready(() => {
   // DISPLAY TIMELINE ON THE PAGE
   getTimeline()
 
+  // WHEN USER FOCUSES OUT OF EVENT NAME INPUT,
+  // CHECK DATABASE TO SEE IF EVENT NAME IS ALREADY TAKEN
+  $('#new-event-name').focusout((event) => {
+    getEventNames()
+  })
+
+  // WHEN USER FOCUSES OUT OF EVENT NAME INPUT,
+  // CHECK DATABASE TO SEE IF EVENT NAME IS ALREADY TAKEN
+  $('#new-event-start-date').focusout((event) => {
+    checkEventStart()
+  })
+
+  $('#new-event-end-date').focusout((event) => {
+    checkEventEnd()
+  })
+
   // CREATE A NEW EVENT HANDLER
   $('#new-event-submit-button').click((event) => {
     event.preventDefault()
-    postNewEvent()
+    if (eventNameIsTaken === false && eventTimeIsValid === true) {
+      postNewEvent()
+    } else {
+      $('#general-new-event-error').empty()
+      $('#general-new-event-error').text('Your input isn\'t quite correct.')
+    }
   })
 
   $('#visual').on('click', (event) => {
