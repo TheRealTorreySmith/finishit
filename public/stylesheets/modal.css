@@ -148,20 +148,61 @@ input:not([type]):focus:not([readonly]) {
 
 @media (min-width: 768px) {
 
-  #new-event-start-time,
   #new-event-start-date,
-  #new-event-end-time,
   #new-event-end-date
    {
     display: inline-block;
     margin: 0 .5em;
-    width: 50%;
+    width: 25%;
   }
 
   #new-event-submit-button {
-    margin-top: 1em;
+    margin-top: 2em;
+    margin-bottom: .7em;
   }
 }
+
+@media (min-width: 768px) {
+
+  #new-event-start-time,
+  #new-event-end-time
+   {
+    display: inline-block;
+    margin: 0 .5em;
+    width: 17%;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  #new-event-start-date,
+  #new-event-end-date
+   {
+    display: inline-block;
+    margin: 0 .5em;
+    width: 90%;
+  }
+
+  #new-event-submit-button {
+    margin-top: 2em;
+    margin-bottom: .7em;
+  }
+}
+
+
+@media (max-width: 767px) {
+
+  #new-event-start-time,
+  #new-event-end-time
+   {
+    display: inline-block;
+    margin: 0 .5em;
+    width: 90%;
+  }
+
+}
+
 
 input[type=email]:not(.browser-default):focus:not([readonly]) + label {
   color:white;
@@ -173,4 +214,44 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label {
 
 input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   color:white;
+}
+
+.event-name-label  {
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}
+
+.description-name-label {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+}
+
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly])  {
+  border-bottom: 1px solid #00aff0;
+  -webkit-box-shadow: 0 1px 0 0 #00aff0;
+  box-shadow: 0 1px 0 0 #00aff0;
+}
+
+
+input[type=date]:not(.browser-default):focus:not([readonly]) + label {
+  color: black;
+}
+
+#event-modal {
+  max-height: 70%;
+}
+
+input[type=text]:not(.browser-default) {
+  width: 70%;
+}
+
+input[type=time]:not(.browser-default) {
+  width: 70%;
+}
+
+.end-time-label, .end-date-label,
+.start-time-label, .start-date-label {
+  font-size: 12px !important;
+  font-family: 'Lato', sans-serif !important;
 }
