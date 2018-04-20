@@ -254,6 +254,7 @@ input[type=time]:not(.browser-default) {
 .start-time-label, .start-date-label {
   font-size: 12px !important;
   font-family: 'Lato', sans-serif !important;
+  
 }
 #general-new-event-error {
   color: tomato;
