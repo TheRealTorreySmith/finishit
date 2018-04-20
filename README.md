@@ -25,7 +25,7 @@ On the login/signup page, create an account or login to an existing account.
 ![dashboard-no-timeline](public/images/no-timeline.png)
 ![dashboard-timeline](public/images/timeline.png)
 
-- When creating a new timeline, you will have the options to name your timeline, give a description, choose the start date, and choose the scope of your timeline's events.
+- When creating a new timeline, you will have the options to name your timeline, give a description, choose the start date, and group member access, and choose the scope of your timeline's events.
 
 ![new-timeline](public/images/new-timeline.png)
 
