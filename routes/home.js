@@ -163,10 +163,23 @@ const getCookie = (req, res, next) => {
     })
 }
 
+
+const getAllTimelines = (req, res, next) => {
+  const payload = jwt.verify(req.cookies.fstoken, KEY)
+  knex('timelines')
+    .join('users_timelines', 'users_timelines.timelines_id', 'timelines.id')
+    .select('timelines.id')
+    .where('users_timelines.users_id', payload.id)
+    .then((allTimes) => {
+      res.json(allTimes)
+    })
+}
+
 router.get('/', dash)
 router.get('/create-timeline', getCookie)
 router.get('/emails', getUserEmails)
 router.get('/names', getTimelineNames)
+router.get('/all-timelines', getAllTimelines)
 router.get('/timeline/id', getTimelineId)
 router.post('/', newTimeline)
 

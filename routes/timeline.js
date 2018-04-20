@@ -19,10 +19,10 @@ const selectedTimelinePage = (req, res, next) => {
     .where('users_timelines.timelines_id', req.params.id)
     .returning(['name', 'timeAxis', 'description'])
     .then((result) => {
-      console.log(result)
       const selectedDuration = result[0].timeAxis.scale
       const timelineName = result[0].name
       const timelineDescription = result[0].description
+      // console.log(result)
       res.render('timeline', {
         title: ' The Selected Timeline Page',
         selectedDuration,
@@ -48,7 +48,6 @@ const getTimelineData = (req, res, next) => {
 }
 
 const createNewEvent = (req, res, next) => {
-  console.log(currentSelectedTimelineId)
   const { content, description, start, end } = req.body
   knex('events')
     .where('timeline_id', currentSelectedTimelineId)

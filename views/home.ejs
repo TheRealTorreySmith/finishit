@@ -19,7 +19,6 @@
         <% if (confirm === 'Yes') { %>
           <div class="default-timeline col s12 center-align">
             <div id="dash-vis"></div>
-            <!-- <a href="#one!"><img class="default-timeline-image" src="#"></a> -->
           </div>
         <% } else { %>
           <div class="center">
@@ -33,11 +32,13 @@
       <div class="container">
         <div class="row">
             <div class="carousel timeline-carousel col s12">
+            <!-- DYNAMICALLY CREATES THE CARDS FOR THE CAROUSEL -->
+            <% for (let i = 1; i <= 5; i++) { %>
               <div class="carousel-item">
                 <div class="time-container">
                   <div class="time">
                     <div class="side">
-                      <a href="#one!"><div id="capture" class="selected-image" height="200px" width="200px"></div></a>
+                      <a href="#two!"><div id="capture<%=i%>" class="selected-image" height="200px" width="200px"></div></a>
                     </div>
                     <div class="side back">
                       <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
@@ -47,71 +48,16 @@
                   </div>
                 </div>
               </div>
-              <div class="carousel-item">
-                <div class="time-container">
-                  <div class="time">
-                    <div class="side">
-                      <a href="#two!"><img class="selected-image" height="200px" width="200px"></a>
-                    </div>
-                    <div class="side back">
-                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                      <div class="divider"></div>
-                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="time-container">
-                  <div class="time">
-                    <div class="side">
-                      <a href="#three!"><img class="selected-image" height="200px" width="200px"></a>
-                    </div>
-                    <div class="side back">
-                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                      <div class="divider"></div>
-                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="time-container">
-                  <div class="time">
-                    <div class="side">
-                      <a href="#four!"><img class="selected-image" height="200px" width="200px"></a>
-                    </div>
-                    <div class="side back">
-                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                      <div class="divider"></div>
-                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="time-container">
-                  <div class="time">
-                    <div class="side">
-                      <a href="#five!"><img class="selected-image" height="200px" width="200px"></a>
-                    </div>
-                    <div class="side back">
-                      <button href="#modal1" class="waves-effect btn modal-trigger edit-button">Edit</button>
-                      <div class="divider"></div>
-                      <button href="#modal2" class="waves-effect btn modal-trigger delete-button">Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <% } %>
           </div>
           <div id="carousel" class="carousel-fixed-item center">
             <a class="btn darken-text-2 prev">Last</a>
             <a class="btn darken-text-2 next">Next</a><br>
-            <button class="btn-small darken-text-2">1</button>
-            <button class="btn-small darken-text-2">2</button>
-            <button class="btn-small darken-text-2">3</button>
-            <button class="btn-small darken-text-2">4</button>
-            <button class="btn-small darken-text-2">5</button>
+            <!-- DYNAMICALLY CREATES NUMBER BUTTONS -->
+            <% for (let i = 1; i <= 5; i++) { %>
+            <button id="btn<%=i%>" class="btn-small darken-text-2"><%=i%></button>
+            <% } %>
+
           </div>
         </div>
       </div>

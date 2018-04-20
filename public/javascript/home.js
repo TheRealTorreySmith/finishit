@@ -79,7 +79,7 @@ const screenCap = () => {
   html2canvas(document.querySelector('.vis-timeline'), {
     letterRendering: 1, windowHeight: 200, windowWidth: 200
   }).then((pic) => {
-    $('#capture').append(pic)
+    $('#capture1').append(pic)
   })
 }
 
@@ -155,7 +155,6 @@ const createTimeline = () => {
       // DOM element where the Timeline will be attached
       const container = document.getElementById('dash-vis')
       // Create object of events needed to populate timeline
-      // const filteredData = result.filter(x => x.id === 1)
       const dataArr = []
       const optionsArr = []
       for (let i = 0; i < result.length; i++) {
@@ -193,16 +192,29 @@ const deleteTimeline = () => {
   const carouselTimeline = document.getElementsByClassName('active')
   $(carouselTimeline).empty()
   const smallbtns = document.getElementsByClassName('btn-small')
-
-  // $(biggestBtn).empty()
-
-for (var i = 0; i < smallbtns.length; i++) {
-  //console.log(smallbtns[i].textContent)
-  if (smallbtns[i].textContent == smallbtns.length) {
-    smallbtns[i].remove()
+  for (var i = 0; i < smallbtns.length; i++) {
+    if (smallbtns[i].textContent == smallbtns.length) {
+      smallbtns[i].remove()
+    }
   }
 }
- }
+
+//  EDITS THE SPECIFIC TIMELINE ON YES CLICK
+const editTimeline = () => {
+  $.get('/home/all-timelines')
+    .done((info) => {
+      const carousel = document.getElementsByClassName('carousel-item')
+      let timeNum = info[0].id
+      for (var i = 0; i < info.length; i++) {
+        $(carousel[i]).attr('id', info[i].id)
+        if ($(carousel[i]).hasClass('active')) {
+          timeNum = $(carousel[i])[0].id
+        }
+      }
+      window.location = `/home/timeline/${timeNum}`
+    })
+}
+
 
 // DOCUMENT READY
 $(document).ready(() => {
@@ -210,6 +222,7 @@ $(document).ready(() => {
   $('.carousel').carousel()
   $('.modal').modal()
   $('.chips').chips()
+
 
   // HOME MENU EVENT HANDLERS
   $('.logout').click(logout)
@@ -229,9 +242,11 @@ $(document).ready(() => {
   $('.prev').click(lastButton)
   $('.btn-small').click(numButton)
   $('#yes-delete').click(deleteTimeline)
+  $('#yes-edit').click(editTimeline)
 
   // COOKIE EVENT HANDLER
   createTimeline()
+  // editTimeline()
   setTimeout(() => {
     screenCap()
   }, 1500)
