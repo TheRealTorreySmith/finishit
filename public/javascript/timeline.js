@@ -26,12 +26,15 @@ const getTimeline = () => {
         template: (item, element, data) => {
           return `<p class="vis-title">${item.content}</p><br><p>${item.description}</p>`
         },
-        editable: result[0].editable,
+        // editable: result[0].editable,
+        editable: true,
+        selectable: true,
         zoomable: result[0].zoomable,
         timeAxis: result[0].timeAxis,
         orientation: result[0].orientation,
         min: result[0].min,
         max: result[0].max,
+        zoomMax: parseInt(result[0].zoomMax),
         onRemove: (item, callback) => {
           console.log(item)
           $.ajax({

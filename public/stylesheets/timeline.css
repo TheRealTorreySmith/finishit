@@ -9,24 +9,8 @@ main {
 }
 
 
-#visualization {
+#visual {
   position: relative;
-}
-
-.vis-button {
-  background-color: black;
-  color: white;
-  border: 0px;
-  font-family: 'Lato', sans-serif;
-  height: 30px;
-}
-
-.menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-  z-index: 100;
 }
 
 .vis-timeline {
@@ -86,4 +70,20 @@ main {
   font-family: 'Lato', sans-serif;
   font-size: 20px;
   font-weight: 700;
+}
+
+.vis-button {
+  background-color: black;
+  color: white;
+  border: 0px;
+  font-family: 'Lato', sans-serif;
+  height: 30px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 150px;
+  margin: 10px;
+  z-index: 100;
 }
