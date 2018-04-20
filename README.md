@@ -1,5 +1,6 @@
 # finishit
 A full-stack web application that is used to successfully manage tasks, processes, and projects.
+![landing-page](public/images/landing.png)
 
 ## Table of Contents
 
@@ -10,17 +11,22 @@ A full-stack web application that is used to successfully manage tasks, processe
 
 Open http://mtn-finishit.herokuapp.com
 
-If you already have an account, click 'Login' in the top right corner. If you are a new users, click 'Signup':![navbar-login-signup](public/images/login.png)
+If you already have an account, click 'Login' in the top right corner. If you are a new users, click 'Signup'
 
-<!-- You can navigate to any of these pages through a number of means:
+On the login/signup page, create an account or login to an existing account.
+- Your username must be at least 8 characters in length
+- Your email must be a valid email
+- Your password must be at least 8 characters in length and must match the 'confirm password' entry
+![login-signup](public/images/login.png)
 
-- By clicking any of the navigation buttons in the header (on desktop):![desktop-header-links](images/Header.png)
+- On your dashboard, you can view any existing timelines or create a new timeline if none exist.
+![dashboard-no-timeline](public/images/no-timeline.png)
+![dashboard-timeline](public/images/timeline.png)
 
-- By clicking any of the explore images (on desktop or mobile): ![explore-image-links](images/Explore.png)
+- When creating a new timeline, you will have the options to name your timeline, give a description, choose the start date, and choose the scope of your timeline's events.
+![new-timeline](public/images/new-timeline.png)
 
-- By clicking any of the navigation buttons in the slide over (on mobile): ![mobile-links](images/Mobile.png)
-
-On each of these pages you may search for and favorite your favorite characters, comics, or events for later access. -->
+- After creation or selection of a timeline, you will be redirected to add events to your timeline ![add-event-page](public/images/event.png)
 
 ## Support
 
