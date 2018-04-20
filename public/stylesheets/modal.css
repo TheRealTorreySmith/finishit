@@ -255,3 +255,7 @@ input[type=time]:not(.browser-default) {
   font-size: 12px !important;
   font-family: 'Lato', sans-serif !important;
 }
+#general-new-event-error {
+  color: tomato;
+  margin: 1em;
+}

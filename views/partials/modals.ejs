@@ -76,8 +76,8 @@
 <!-- NEW EVENT(S) MODAL -->
 <div id="event-modal" class="modal">
   <div class="modal-content">
-    <form class="form" id="signup-form" method="post">
-      <label class="event-name-label" for="new-event-name">EVENT NAME:</label><br>
+    <form class="form" id="new-event-form" method="post">
+      <label class="event-name-label" for="new-event-name">EVENT NAME:</label>
       <span class="event-error new-event-form-name-error"></span>
       <input max="30" type="text" id='new-event-name' name="new-event-name" required><br>
 
@@ -105,8 +105,8 @@
 
       <br>
 
-      <input type="submit" id='new-event-submit-button' class="modal-action modal-close btn" value="ADD EVENT">
       <span class="new-event-error" id="general-new-event-error"></span>
+      <input type="submit" id='new-event-submit-button' class="modal-action btn" value="ADD EVENT">
     </form>
   </div>
 </div>
